@@ -9,7 +9,7 @@ class Profile(models.Model):
                                 on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='users/%Y/%m/%d/',
-                              blank=True)
+                              blank=True, default="media/users/2020/11/14/6dedf44d3ea322809634744be06e4447--abandoned-castles-abandone_omca0a")
 
     def __str__(self):
         return 'Profile for user {}'.format(self.user.username)

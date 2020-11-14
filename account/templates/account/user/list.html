@@ -10,7 +10,7 @@
       <div class="user">
         <a href="{{ user.get_absolute_url }}">
           {% thumbnail user.profile.photo "180x180" crop="100%" as im %}
-            <img src="{{ im.url|default"media/users/2020/11/14/6dedf44d3ea322809634744be06e4447--abandoned-castles-abandone_omca0a" }}">
+            <img src="{{ im.url }}">
           {% endthumbnail %}
         </a>
         <div class="info">
