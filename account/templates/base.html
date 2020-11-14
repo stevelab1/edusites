@@ -14,10 +14,10 @@
         <a href="{% url "dashboard" %}">My dashboard</a>
       </li>
       <li {% if section == "moodboard" %}class="selected"{% endif %}>
-        <a href="{% url "moodboard:list" %}">Moodboard</a>
+        <a href="{% url "moodboard:list" %}">Noticeboard</a>
       </li>
       <li {% if section == "people" %}class="selected"{% endif %}>
-        <a href="{% url "user_list" %}">People</a>
+        <a href="{% url "user_list" %}">Discover</a>
       </li>
     </ul>
   {% endif %}
