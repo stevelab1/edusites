@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% load cloudinary %}
+{% block title %}Add image{% endblock %}
+{% block content %}
+  <h1>Add image to Moodboard</h1>
+  <img src="{{ request.GET.url }}" class="image-preview">
+  <form action="." method="post">
+    {{ form.as_p }}
+    {% csrf_token %}
+    <input type="submit" value="Add to moodboard">
+  </form>
+{% endblock %}

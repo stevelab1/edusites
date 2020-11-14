@@ -1,0 +1,24 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard{% endblock %}
+
+{% block content %}
+  <h1>Dashboard</h1>
+  <p>Welcome to your dashboard! You can <a href="{% url "edit" %}">edit your profile</a> or <a href="{% url "password_change" %}">change your password</a>.</p>
+
+  {% with total_images_created=request.user.images_created.count %}
+  <p>You've added {{ total_images_created }} image{{ total_images_created|pluralize }} to your moodboard.</p>
+  {% endwith %}
+
+  <p>Drag <a href="javascript:{% include "bookmarklet_launcher.js" %}" class="button">Add</a> to your bookmarks toolbar to add images from other websites to your moodboard<p>
+<br>
+
+  <h2>What's happening</h2>
+  <div id="action-list">
+    {% for action in actions %}
+      {% include "actions/action/detail.html" %}
+    {% endfor %}
+  </div>
+{% endblock %}
+
+
