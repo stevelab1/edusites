@@ -4,9 +4,9 @@ from .models import Profile
 
 
 
-admin.site.site_header = "FictionPy"
+admin.site.site_header = "edusites"
 admin.site.index_title = "Admin"
-admin.site.site_title = "FictionPy"
+admin.site.site_title = "edusites"
 
 # Register your models here.
 

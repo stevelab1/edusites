@@ -1,6 +1,6 @@
 (function(){
   var jquery_version = '3.5.1';
-  var site_url = 'https://fictionpy.herokuapp.com/';
+  var site_url = 'https://edusites.herokuapp.com/';
   var static_url = site_url + 'static/';
   var min_width = 100;
   var min_height = 100;
@@ -16,7 +16,7 @@
     jQuery('head').append(css);
 
     // load HTML
-    box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Add an image to your FictionPy moodboard:</h1><div class="images"></div></div>';
+    box_html = '<div id="bookmarklet"><a href="#" id="close">&times;</a><h1>Add an image to your edusites moodboard:</h1><div class="images"></div></div>';
     jQuery('body').append(box_html);
 
     // close event
