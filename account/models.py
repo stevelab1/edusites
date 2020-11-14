@@ -9,7 +9,7 @@ class Profile(models.Model):
                                 on_delete=models.CASCADE)
     date_of_birth = models.DateField(blank=True, null=True)
     photo = models.ImageField(upload_to='users/%Y/%m/%d/',
-                              blank=True)
+                              blank=True, default='https://res.cloudinary.com/hmklz8dtf/image/upload/v1/media/users/2020/11/14/3abc6275419f468bf41a10b64a90f31b--st-etienne-cathedrals_jqbogy')
 
     def __str__(self):
         return 'Profile for user {}'.format(self.user.username)
