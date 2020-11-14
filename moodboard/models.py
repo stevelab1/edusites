@@ -12,8 +12,8 @@ class Image(models.Model):
     title = models.CharField(max_length=255)
     slug = models.SlugField(max_length=255,
                             blank=True)
-    url = models.URLField(max_length=255)
-    image = models.ImageField(upload_to='images/%Y/%m/%d/')
+    url = models.URLField(max_length=300)
+    image = models.ImageField(upload_to='images/%Y/%m/%d/', default='https://res.cloudinary.com/hmklz8dtf/image/upload/v1/media/users/2020/11/14/3abc6275419f468bf41a10b64a90f31b--st-etienne-cathedrals_jqbogy')
     description = models.TextField(blank=True)
     created = models.DateField(auto_now_add=True,
                                db_index=True)
