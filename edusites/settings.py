@@ -34,6 +34,7 @@ DEBUG = False
 # Application definition
 
 INSTALLED_APPS = [
+    'courses.apps.CoursesConfig',
     'account.apps.AccountConfig',
     'django.contrib.admin',
     'django.contrib.auth',
