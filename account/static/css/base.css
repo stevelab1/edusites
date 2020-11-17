@@ -158,7 +158,7 @@ input, select, textarea {
     font-family:'Roboto', sans-serif;
     float:left;
     clear:both;
-    width:500px;
+    width:50%;
 }
 
 textarea {
