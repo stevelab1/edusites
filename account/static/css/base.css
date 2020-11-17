@@ -158,7 +158,7 @@ input, select, textarea {
     font-family:'Roboto', sans-serif;
     float:left;
     clear:both;
-    width:300px;
+    width:500px;
 }
 
 textarea {
@@ -242,7 +242,7 @@ ul#course-modules li:hover {
     border:1px solid #ccc;
     padding:0 20px;
     margin-bottom:10px;
-    width:800px;
+    width:400px;
     overflow:auto;
 }
 
