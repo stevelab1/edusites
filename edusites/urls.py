@@ -23,6 +23,7 @@ urlpatterns = [
     path('account/', include('account.urls')),
     path('social-auth/', include('social_django.urls', namespace='social')),
     path('moodboard/', include('moodboard.urls', namespace='moodboard')),
+    path('course/', include('courses.urls')),
 ]
 
 if settings.DEBUG:
