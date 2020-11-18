@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 
 {% block title %}
-    Sign up
+  Sign up
 {% endblock %}
 
 {% block content %}
@@ -9,7 +9,7 @@
     Sign up
   </h1>
   <div class="module">
-    <p>Enter your details to create an account:</p>
+    <p>Enter your details to create a student account:</p>
     <form method="post">
       {{ form.as_p }}
       {% csrf_token %}

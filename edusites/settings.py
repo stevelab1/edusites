@@ -47,6 +47,10 @@ INSTALLED_APPS = [
     'moodboard.apps.MoodboardConfig',
     'sorl.thumbnail',
     'actions.apps.ActionsConfig',
+    'students.apps.StudentsConfig',
+    # 'embed_video',
+    # 'chat',
+    # 'channels',
 ]
 
 MIDDLEWARE = [
