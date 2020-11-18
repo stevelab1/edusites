@@ -158,7 +158,6 @@ input, select, textarea {
     font-family:'Roboto', sans-serif;
     float:left;
     clear:both;
-    width:100%;
 }
 
 textarea {
@@ -178,7 +177,6 @@ input[type=submit], a.button {
     border:none;
     padding:10px 20px;
     margin:20px 0;
-    width:100%;
 }
 
 a.secondary-button {
