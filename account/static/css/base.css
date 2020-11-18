@@ -178,7 +178,7 @@ input[type=submit], a.button {
     border:1px solid #4dcc43;
     padding:10px 20px;
     margin:20px 0;
-    width:300px;
+    width:50%;
 }
 
 a.secondary-button {
