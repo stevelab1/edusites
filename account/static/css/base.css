@@ -175,9 +175,10 @@ input[type=submit], a.button {
     color:#fff;
     font-size:16px;
     text-transform:uppercase;
-    border:none;
+    border:1px solid #4dcc43;
     padding:10px 20px;
     margin:20px 0;
+    width:40%;
 }
 
 a.secondary-button {
