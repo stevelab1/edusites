@@ -15,6 +15,7 @@ import django_heroku
 import cloudinary
 from dotenv import load_dotenv
 load_dotenv()
+from django.urls import reverse_lazy
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
@@ -48,7 +49,7 @@ INSTALLED_APPS = [
     'sorl.thumbnail',
     'actions.apps.ActionsConfig',
     'students.apps.StudentsConfig',
-    # 'embed_video',
+    'embed_video',
     # 'chat',
     # 'channels',
 ]
@@ -147,7 +148,8 @@ MEDIA_URL = '/media/'
 DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
 # MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
-LOGIN_REDIRECT_URL = 'dashboard'
+# LOGIN_REDIRECT_URL = 'dashboard'
+LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 

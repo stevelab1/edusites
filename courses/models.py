@@ -88,9 +88,10 @@ class ItemBase(models.Model):
     def __str__(self):
         return self.title
 
-    # def render(self):
-    #     return render_to_string(f'courses/content/{self._meta.model_name}.html',
-    #                             {'item': self})
+    def render(self):
+        return render_to_string(
+            f'courses/content/{self._meta.model_name}.html',
+            {'item': self})
 
 class Text(ItemBase):
     content = models.TextField()
@@ -103,4 +104,3 @@ class Image(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
-
