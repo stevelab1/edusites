@@ -104,3 +104,5 @@ class Image(ItemBase):
 
 class Video(ItemBase):
     url = models.URLField()
+    content = models.TextField()
+

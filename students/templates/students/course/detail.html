@@ -29,7 +29,6 @@
   <div class="module">
     {% for content in module.contents.all %}
       {% with item=content.item %}
-        <h2>{{ item.title }}</h2>
         {{ item.render }}
       {% endwith %}
     {% endfor %}

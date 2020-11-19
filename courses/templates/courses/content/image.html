@@ -1,1 +1,12 @@
-<p><img src="{{ item.file.url }}" alt="{{ item.title }}"></p>
+<!--        <h2>{{ item.title }}</h2>-->
+
+<!--<p><img src="{{ item.file.url }}" alt="image of {{ item.title }}"></p>-->
+
+<div class="card" style="width: 18rem;">
+  <img src="{{ item.file.url }}" class="card-img-top" alt="Image of {{ item.title }}">
+  <div class="card-body">
+    <h5 class="card-title">{{ item.title }}</h5>
+    <p class="card-text">{{ item.text }}</p>
+<!--    <a href="{{ item.file.url }}" class="btn btn-dark">Go somewhere</a>-->
+  </div>
+</div>
