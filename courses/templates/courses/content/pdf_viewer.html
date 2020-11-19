@@ -1,0 +1,15 @@
+<div class="container p-3 my-3 bg-light text-black">
+  <div class="row">
+    <div class="col-sm">
+<h3>{{ item.title }}</h3>
+    <iframe src="{{ item.file.url }}" width="500px" height="500px" >
+    </iframe>
+    </div>
+    <div class="col-sm">
+      {{ item.title|upper|linebreaks }}
+     {{ item.content|linebreaks }}
+      <a href="{{ item.file.url }}" class="btn btn-dark">Go to file</a>
+
+  </div>
+</div>
+    </div>
