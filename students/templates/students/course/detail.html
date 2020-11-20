@@ -27,7 +27,7 @@
         <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
           <a href="{% url "student_course_detail_module" object.id m.id %}">
             <span>
-              <span class="order">{{ m.order|add:1 }}. {{ m.title }}</span>
+              <span class="order">{{ m.order|add:1 }}. {{ m.title|slice:":8" }}</span>
             </span>
             <br>
 <!--            {{ m.order|add:1 }}. {{ m.title }}-->
@@ -42,7 +42,7 @@
      <h1>
     {{ course.title|upper }}
   </h1>
-    <h1>Module {{ module.order|add:1 }}: {{ module.title }}</h1>
+    <h1>Module {{ module.order|add:1 }}: {{ module.title|slice:"9:" }}</h1>
     {% for content in module.contents.all %}
       {% with item=content.item %}
         {{ item.render }}

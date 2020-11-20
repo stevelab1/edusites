@@ -1,15 +1,16 @@
 {% load embed_video_tags %}
 
 
-<div class="container p-3 my-3 bg-light text-black">
-  <div class="row">
-    <div class="col-sm">
-        {% video item.url "100% x 100%" query="rel=0&wmode=transparent" %}
-    </div>
-    <div class="col-sm">
-        {{ item.title|upper|linebreaks }}
-        {{ item.content|linebreaks }}
-    </div>
-  </div>
-</div>
-<!--{% video item.url "100% x 50%" %}-->
+<!--<div class="container p-3 my-3 bg-light text-black float-left">-->
+<!--  <div class="row">-->
+<!--    <div class="col">-->
+<!--        {% video item.url "305 x 200" query="rel=0&wmode=transparent" %}-->
+<!--    </div>-->
+<!--    <div class="col">-->
+<!--        {{ item.title|upper|linebreaks }}-->
+<!--        {{ item.content|linebreaks }}-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+{% video item.url "335 x 200" %}
