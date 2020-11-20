@@ -20,7 +20,7 @@
     <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
   </ol>
 </nav>
-  <div class="contents">
+  <div class="contents_b">
 <!--    <h3>Modules</h3>-->
     <ul id="modules" class="list-group list-group-horizontal">
       {% for m in object.modules.all %}
@@ -38,7 +38,7 @@
       {% endfor %}
     </ul>
   </div>
-  <div class="module">
+  <div class="module_b">
      <h1>
     {{ course.title|upper }}
   </h1>
