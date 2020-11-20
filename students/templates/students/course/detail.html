@@ -5,20 +5,20 @@
 {% endblock %}
 
 {% block content %}
-  <h1>
-    {{ module.title }}
-  </h1>
+<!--  <h1>-->
+<!--    {{ course.title|upper }}-->
+<!--  </h1>-->
   <div class="contents">
-    <h3>Modules</h3>
-    <ul id="modules">
+<!--    <h3>Modules</h3>-->
+    <ul id="modules" class="list-group list-group-horizontal">
       {% for m in object.modules.all %}
         <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
           <a href="{% url "student_course_detail_module" object.id m.id %}">
             <span>
-              Module <span class="order">{{ m.order|add:1 }}</span>
+              <span class="order">{{ m.order|add:1 }}. {{ m.title }}</span>
             </span>
             <br>
-            {{ m.title }}
+<!--            {{ m.order|add:1 }}. {{ m.title }}-->
           </a>
         </li>
       {% empty %}
@@ -27,6 +27,10 @@
     </ul>
   </div>
   <div class="module">
+     <h1>
+    {{ course.title|upper }}
+  </h1>
+    <h1>Module {{ module.order|add:1 }}: {{ module.title }}</h1>
     {% for content in module.contents.all %}
       {% with item=content.item %}
         {{ item.render }}

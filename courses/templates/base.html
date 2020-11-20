@@ -13,28 +13,20 @@
 </head>
 <body>
   <div id="header">
-    <span class="logo">edusite</span>
+    <span class="logo"><a href="/">edusite</span>
+
+      <ul class="menu">
     {% if request.user.is_authenticated %}
-    <ul class="menu">
-      <li {% if section == "dashboard" %}class="selected"{% endif %}>
-        <a href="{% url "dashboard" %}">My dashboard</a>
-      </li>
-      <li {% if section == "moodboard" %}class="selected"{% endif %}>
-        <a href="{% url "moodboard:list" %}">Noticeboard</a>
-      </li>
-      <li {% if section == "people" %}class="selected"{% endif %}>
-        <a href="{% url "user_list" %}">Discover</a>
-      </li>
-    </ul>
-  {% endif %}
-  <span class="user">
-    {% if request.user.is_authenticated %}
-      Hello {{ request.user|title }},
+      <li Hello {{ request.user|title }},>
       <a href="{% url "logout" %}">Logout</a>
+      </li>
     {% else %}
-      <a href="{% url "login" %}">Login</a>
+      <li> <a href="{% url "login" %}">Login</a>
+       </li>
+    </ul>
 <!--      <a href="{% url "register" %}">/ Signup</a>-->
-    {% endif %}
+
+      {% endif %}
   </span>
   </div>
 
