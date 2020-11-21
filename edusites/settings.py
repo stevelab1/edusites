@@ -50,7 +50,7 @@ INSTALLED_APPS = [
     'actions.apps.ActionsConfig',
     'students.apps.StudentsConfig',
     'embed_video',
-    # 'chat',
+    'chat',
     # 'channels',
 ]
 
