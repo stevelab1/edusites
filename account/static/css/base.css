@@ -224,11 +224,11 @@ input, select, textarea {
     font-family:'Roboto', sans-serif;
     float:left;
     clear:both;
-    width:100%;
 }
 
 textarea {
     height:80px;
+    width:300px;
 }
 
 select {
@@ -241,7 +241,7 @@ input[type=submit], a.button {
     color:#fff;
     font-size:16px;
     text-transform:uppercase;
-    border:none;
+    border:1px solid;
     padding:10px 20px;
     margin:20px 0;
 }
@@ -294,13 +294,37 @@ ul#course-modules li:hover {
 #module-contents input[type=submit] {
     color:#3fad37;
     background:none;
-    margin:-24px 0 0;
+    margin:-20px 0 0;
     padding:0;
     float:left;
     text-transform:none;
 }
 
 #module-contents div:hover {
+    cursor:move;
+}
+
+#module-contents_b div {
+    padding:10px 20px;
+    border:1px solid #ccc;
+    background:#fff
+}
+
+#module-contents_b form {
+    margin:0;
+    padding:0;
+}
+
+#module-contents_b input[type=submit] {
+    color:#3fad37;
+    background:none;
+    margin:-25px 50px 0;
+    padding:0px 5px;
+    float:left;
+    text-transform:none;
+}
+
+#module-contents_b div:hover {
     cursor:move;
 }
 

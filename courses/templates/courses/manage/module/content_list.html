@@ -32,7 +32,7 @@
   <div class="module">
     <h2>Module {{ module.order|add:1 }}: {{ module.title }}</h2>
     <h3>Module contents:</h3>
-    <div id="module-contents">
+    <div id="module-contents_b">
       {% for content in module.contents.all %}
         <div data-id="{{ content.id }}">
           {% with item=content.item %}
@@ -90,10 +90,10 @@
     }
   });
 
-  $('#module-contents').sortable({
+  $('#module-contents_b').sortable({
     stop: function(event, ui) {
       contents_order = {};
-      $('#module-contents').children().each(function(){
+      $('#module-contents_b').children().each(function(){
         // associate the module's id with its order
         contents_order[$(this).data('id')] = $(this).index();
       });
