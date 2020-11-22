@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'students.apps.StudentsConfig',
     'embed_video',
     'chat',
-    # 'channels',
+    'channels',
 ]
 
 MIDDLEWARE = [
@@ -153,6 +153,8 @@ LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
+# Channels config
+ASGI_APPLICATION = 'edusites.routing.application'
 
 
 AUTHENTICATION_BACKENDS = [
