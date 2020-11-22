@@ -12,7 +12,7 @@
 {% endblock %}
 
 {% block domready %}
-  var url = 'wss://' + window.location.host +
+  var url = 'ws://' + window.location.host +
             '/ws/chat/room/' + '{{ course.id }}/';
   var chatSocket = new WebSocket(url);
 
@@ -28,14 +28,13 @@
     var name = isMe ? 'Me' : data.user;
 
     var $chat = $('#chat');
-    $chat.append('<div class="message ' + source + '">' +
-                 '<strong>' + name + '</strong> ' +
-                 '<span class="date">' + datetime + '</span><br>' +
-                 message +
-                 '</div>');
-    $chat.scrollTop($chat[0].scrollHeight);
+$chat.append('<div class="message ' + source + '">' +
+             '<strong>' + name + '</strong> ' +
+             '<span class="date">' + datetime + '</span><br>' +
+             message +
+             '</div>');
+$chat.scrollTop($chat[0].scrollHeight);
   };
-
   chatSocket.onclose = function(e) {
     console.error('Chat socket closed unexpectedly');
   };
@@ -56,7 +55,6 @@
       $input.focus();
     }
   });
-
   $input.focus();
   $input.keyup(function(e) {
     if (e.which === 13) {
@@ -65,3 +63,4 @@
     }
   });
 {% endblock %}
+

@@ -363,7 +363,7 @@ ul#course-modules li:hover {
     display:inline;
     float:left;
     margin:10px 10px 0;
-    min-width:440px;
+    min-width:130px;
     clear:both;
 }
 

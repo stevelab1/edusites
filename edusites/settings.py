@@ -184,6 +184,17 @@ ABSOLUTE_URL_OVERRIDES = {
                                         args=[u.username])
 }
 
+
+
+CHANNEL_LAYERS = {
+    'default': {
+        'BACKEND': 'channels_redis.core.RedisChannelLayer',
+        'CONFIG': {
+            'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
+        },
+    },
+}
+
 ALLOWED_HOSTS = ['.herokuapp.com']
 
 # Parse database configuration from $DATABASE_URL
