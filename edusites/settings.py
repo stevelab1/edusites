@@ -50,8 +50,8 @@ INSTALLED_APPS = [
     'actions.apps.ActionsConfig',
     'students.apps.StudentsConfig',
     'embed_video',
-    'chat',
     'channels',
+    'chat',
 ]
 
 MIDDLEWARE = [
@@ -68,6 +68,9 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'edusites.urls'
+
+# Channels config
+ASGI_APPLICATION = 'edusites.routing.application'
 
 TEMPLATES = [
     {
@@ -153,8 +156,7 @@ LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
 LOGIN_URL = 'login'
 LOGOUT_URL = 'logout'
 
-# Channels config
-ASGI_APPLICATION = 'edusites.routing.application'
+
 
 
 AUTHENTICATION_BACKENDS = [
@@ -192,7 +194,6 @@ CHANNEL_LAYERS = {
         'CONFIG': {
             'hosts': [os.environ.get('REDIS_URL', 'redis://localhost:6379')],
         },
-        "ROUTING": "chat.routing.websocket_urlpatterns",
     },
 }
 
