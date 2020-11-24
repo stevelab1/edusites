@@ -88,10 +88,10 @@
 
     {% for course in courses %}
       {% with subject=course.subject %}
-  <div class="col">
+  <div class="col p-0">
 
         <a href="{% url "course_detail" course.slug %}">
-        <div class="card border-muted mb-3" style="width: 13rem; height: 15rem">
+        <div class="card border-muted mb-3" style="width: 11rem; height: 13rem">
           <div class="card-header text-center">Course Image</div>
           <div class="card-body">
             <h5 class="card-title">{{ course.title }}</h5>
