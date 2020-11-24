@@ -84,11 +84,11 @@
   </div>
   <div class="module">
     <div class="container">
-    <div class="row mr-0">
+    <div class="row mr-0 no-gutters">
 
     {% for course in courses %}
       {% with subject=course.subject %}
-  <div class="col p-1">
+  <div class="col p-0">
 
         <a href="{% url "course_detail" course.slug %}">
         <div class="card border-muted mb-3" style="width: 11rem; height: 13rem">
