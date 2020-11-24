@@ -42,7 +42,7 @@
         <div class="card-body">
           <h5 class="card-title">What do you want to learn?</h5>
           <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#" class="btn btn-primary">Go somewhere</a>
+          <a href="#browse" class="btn btn-primary">Browse courses</a>
         </div>
       </div>
       <div id="teach" class="tab-pane fade">
@@ -66,9 +66,8 @@
 <br>
   <br>
 
-
   <div class="contents">
-    <h6>SUBJECTS</h6>
+    <h6 id="browse">SUBJECTS</h6>
     <ul id="modules">
       <li {% if not subject %}class="selected"{% endif %}>
         <a href="{% url "course_list" %}">All</a>
