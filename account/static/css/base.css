@@ -7,7 +7,12 @@ body {
 }
 
 a {
-    color:#3fad37;
+    color:#444643;
+    text-decoration:none;
+}
+
+a:hover {
+    color:#000000;
     text-decoration:none;
 }
 
@@ -95,8 +100,8 @@ h1 {
     width:35%;
     padding:10px;
     float:left;
-    background:#333;
-    color: #fff;
+    background:#f9f9f9;
+    color: #373232;
     font-family:'Roboto', sans-serif;
 }
 
@@ -115,27 +120,27 @@ h1 {
 }
 
 .contents ul li.selected {
-    background:#3f3f3f;
+    background:#e6e6e6;
 }
 
 .contents ul li:hover {
-    background:#3f3f3f;
+    background:#e6e6e6;
 }
 
 .contents ul span {
     text-transform:uppercase;
-    color:#bbb;
+    color:#777777;
     font-size:14px;
 }
 
 .contents ul a {
     display:block;
-    color:#fff;
+    color:#393939;
     text-decoration:none;
 }
 
 .contents ul a:hover {
-    color:#4dcc43;
+    color:#000000;
     cursor:move;
 }
 
