@@ -87,7 +87,7 @@
      <div class="row">
        {% for course in courses %}
         {% with subject=course.subject %}
-         <div class="col-xl-3 mx-1 p-0">
+         <div class="col-xl-3 mx-2 p-0">
            <a href="{% url "course_detail" course.slug %}">
            <div class="card border-muted mb-3" style="width: 11rem; height: 13rem">
              <div class="card-header text-center">Course Image</div>
