@@ -39,19 +39,30 @@
     </ul>
   </div>
   <div class="module">
+    <div class="container">
+    <div class="row mr-0">
+
     {% for course in courses %}
       {% with subject=course.subject %}
-        <h3>
-          <a href="{% url "course_detail" course.slug %}">
-            {{ course.title }}
-          </a>
-        </h3>
-        <p>
-          <a href="{% url "course_list_subject" subject.slug %}">{{ subject }}</a>.
-            {{ course.total_modules }} modules.
-            Instructor: {{ course.owner.get_full_name }}
-        </p>
+  <div class="col p-0">
+
+        <a href="{% url "course_detail" course.slug %}">
+        <div class="card border-info mb-3" style="width: 11rem; height: 13rem">
+          <div class="card-header text-center">Course Image</div>
+          <div class="card-body">
+            <h5 class="card-title">{{ course.title }}</h5>
+            <p class="card-text"><small class="text-muted">{{ course.total_modules }} modules. Instructor: {{ course.owner.get_full_name }}</small></p>
+          </div><br><br></a>
+<!--          <div class="card-footer text-center"><small class="text-muted"><a href="{% url "course_list_subject" subject.slug %}" class="card-link">{{ subject }}</small></a></div>-->
+        </div>
+      </div>
+
+
       {% endwith %}
     {% endfor %}
   </div>
+    </div>
+    </div>
+
+
 {% endblock %}
