@@ -40,11 +40,11 @@
   </div>
   <div class="module">
     <div class="container">
-    <div class="row">
+    <div class="row mr-0">
 
     {% for course in courses %}
       {% with subject=course.subject %}
-  <div class="col p-0">
+  <div class="col">
 
         <a href="{% url "course_detail" course.slug %}">
         <div class="card border-info mb-3" style="width: 11rem; height: 13rem">
