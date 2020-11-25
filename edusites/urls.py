@@ -18,7 +18,7 @@ from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
 from courses.views import CourseListView
-
+from .views import robots_txt
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +29,7 @@ urlpatterns = [
     path('', CourseListView.as_view(), name='course_list'),
     path('students/', include('students.urls')),
     path('chat/', include('chat.urls', namespace='chat')),
+    path("robots.txt", robots_txt),
 ]
 
 if settings.DEBUG:
