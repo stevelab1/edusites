@@ -97,7 +97,7 @@ h1 {
 }
 
 .contents {
-    width:35%;
+    width:15vmax;
     padding:10px;
     float:left;
     background:#f9f9f9;
