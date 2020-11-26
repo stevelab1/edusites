@@ -100,7 +100,8 @@
            <div class="card border-muted mb-3" style="width: 13rem; height: 14rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
-               <h5 class="card-title">{{ course.contents }}</h5>
+<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
+               <h6 class="card-text">{{ course.overview }}</h6>
                <p class="card-text"><small class="text-muted">{{ course.total_modules }} modules. Instructor: {{ course.owner.get_full_name }}</small></p>
              </div><br><br></a>
 <!--          <div class="card-footer text-center"><small class="text-muted"><a href="{% url "course_list_subject" subject.slug %}" class="card-link">{{ subject }}</small></a></div>-->
