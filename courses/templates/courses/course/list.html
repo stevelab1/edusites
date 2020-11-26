@@ -99,7 +99,7 @@
                <p class="card-text"><small class="text-muted">{{ course.total_modules }} modules. Instructor: {{ course.owner.get_full_name }}</small></p>
              </div>
              <div class="card-footer bg-white border-0">
-               <span class="badge rounded-pill bg-dark">{% for s in subjects %} {{ s.title }} {% endfor %}</span>
+               <span class="badge rounded-pill bg-dark"> {{ subject }} </span>
                <span  class="badge rounded-pill bg-dark">
   {% for s in subjects %} {{ s.total_courses }} {% endfor %}Modules
 </span>
