@@ -236,11 +236,11 @@ input, select, textarea {
 
 textarea {
     height:80px;
-    width:300px;
+    width:100%;
 }
 
 select {
-    width:324px;
+    width:100%;
 }
 
 input[type=submit], a.button {
