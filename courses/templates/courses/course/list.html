@@ -84,7 +84,7 @@
       {% for s in subjects %}
         <li {% if subject == s %}class="selected"{% endif %}>
           <a href="{% url "course_list_subject" s.slug %}">
-            {{ s.title }} <span class="badge bg-secondary text-white">{{ s.total_courses }}</span>
+            {{ s.title }}<span class="badge bg-outline text-muted">{{ s.total_courses }}</span>
           </a>
         </li>
       {% endfor %}
