@@ -100,9 +100,7 @@
              </div>
              <div class="card-footer bg-white border-0">
                <span class="badge rounded-pill bg-dark"> {{ subject }} </span>
-               <span  class="badge rounded-pill bg-dark">
-  {% for s in subjects %} {{ s.total_courses }} {% endfor %}Modules
-</span>
+               <span  class="badge rounded-pill bg-dark">{{ course.total_modules }} modules</span>
              </div>
            </div>
            </a>
