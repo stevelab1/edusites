@@ -40,9 +40,15 @@
     <div class="tab-content">
       <div id="learn" class="tab-pane active">
         <div class="card-body">
-          <h5 class="card-title">What do you want to learn?</h5>
-          <p class="card-text">With supporting text below as a natural lead-in to additional content.</p>
-          <a href="#browse" class="btn btn-primary">Browse courses</a>
+          {% if subject %}
+             <h5 class="card-title"> {{ subject.title }} Courses</h5>
+             <p class="card-text">All Courses</p>
+
+<!--             <p class="card-text"> {{ subject.content|linebreaks }} </p>-->
+          {% else %}
+             <h5 class="card-title">What do you want to learn?</h5>
+             <p class="card-text">All Courses</p>
+          {% endif %}
         </div>
       </div>
       <div id="teach" class="tab-pane fade">
@@ -63,8 +69,6 @@
         </div>
 
 </div>
-  <br>
-
   <br>
 
   <div class="contents">

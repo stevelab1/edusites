@@ -9,6 +9,7 @@ from .fields import OrderField
 class Subject(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
+    content = models.TextField()
 
     class Meta:
         ordering = ['title']
