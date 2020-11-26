@@ -42,9 +42,13 @@
         <div class="card-body">
           {% if subject %}
              <h5 class="card-title"> {{ subject.title }} Courses</h5>
-             <p class="card-text">All Courses</p>
-
-<!--             <p class="card-text"> {{ subject.content|linebreaks }} </p>-->
+             <p class="card-text"> {{ subject.content}} </p>
+<!--             <button type="button" class="btn btn-secondary">-->
+<!--  Courses <span class="badge bg-dark">    {% for s in subjects %}-->
+<!--{{ s.total_courses }}-->
+<!--                     {% endfor %}-->
+<!--</span>-->
+</button>
           {% else %}
              <h5 class="card-title">What do you want to learn?</h5>
              <p class="card-text">All Courses</p>
@@ -80,8 +84,7 @@
       {% for s in subjects %}
         <li {% if subject == s %}class="selected"{% endif %}>
           <a href="{% url "course_list_subject" s.slug %}">
-            {{ s.title }}
-            <br><span>{{ s.total_courses }} courses</span>
+            {{ s.title }} <span class="badge bg-secondary text-white">{{ s.total_courses }}</span>
           </a>
         </li>
       {% endfor %}
