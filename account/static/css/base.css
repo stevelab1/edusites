@@ -125,11 +125,11 @@ h1 {
 }
 
 .contents ul li.selected {
-    background:#e6e6e6;
+    background:#686f74;
 }
 
 .contents ul li:hover {
-    background:#e6e6e6;
+    background:#686f74;
 }
 
 .contents ul span {
@@ -140,12 +140,12 @@ h1 {
 
 .contents ul a {
     display:block;
-    color:#393939;
+    color:#ffffff;
     text-decoration:none;
 }
 
 .contents ul a:hover {
-    color:#000000;
+    color:#ffffff;
     cursor:move;
 }
 

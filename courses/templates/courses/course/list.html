@@ -69,7 +69,7 @@
 </div>
   <br>
 
-  <div class="contents">
+  <div class="contents text-white bg-secondary mb-3 rounded-3">
     <h6>SUBJECTS</h6>
     <ul id="browse">
       <li {% if not subject %}class="selected"{% endif %}>
@@ -78,7 +78,7 @@
       {% for s in subjects %}
         <li {% if subject == s %}class="selected"{% endif %}>
           <a href="{% url "course_list_subject" s.slug %}">
-            {{ s.title }}<span class="badge bg-outline text-muted">{{ s.total_courses }}</span>
+            {{ s.title }}<span class="badge bg-outline text-white">{{ s.total_courses }}</span>
           </a>
         </li>
       {% endfor %}
@@ -91,16 +91,16 @@
         {% with subject=course.subject %}
          <div class="col-xl-3 mx-4 p-0">
            <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted mb-3" style="width: 13rem; height: 14rem">
+           <div class="card border-muted text-white bg-secondary mb-3 rounded-3" style="width: 13rem; height: 14rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
                <h6 class="card-text">{{ course.overview }}</h6>
-               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
+               <p class="card-text"><small class="text-white">Instructor: {{ course.owner.get_full_name }}</small></p>
              </div>
              <div class="card-footer bg-white border-0">
-               <span class="badge rounded-pill bg-dark"> {{ subject }} </span>
-               <span  class="badge rounded-pill bg-dark">{{ course.total_modules }} modules</span>
+               <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} modules</span>
+               <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
              </div>
            </div>
            </a>
