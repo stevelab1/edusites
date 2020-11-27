@@ -91,12 +91,12 @@
         {% with subject=course.subject %}
          <div class="col-xl-3 mx-4 p-0">
            <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted text-white bg-secondary mb-3 rounded-3" style="width: 13rem; height: 14rem">
+           <div class="card border-dark mb-3 rounded-3" style="width: 13rem; height: 14rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
                <h6 class="card-text">{{ course.overview }}</h6>
-               <p class="card-text"><small class="text-white">Instructor: {{ course.owner.get_full_name }}</small></p>
+               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
              </div>
              <div class="card-footer bg-white border-0">
                <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} modules</span>
