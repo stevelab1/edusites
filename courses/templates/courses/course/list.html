@@ -45,7 +45,7 @@
              <p class="card-text"> {{ subject.content}} </p>
           {% else %}
              <h5 class="card-title">What do you want to learn?</h5>
-             <p class="card-text">All Courses</p>
+             <p class="card-text">Browse Courses</p>
           {% endif %}
         </div>
       </div>
@@ -91,7 +91,7 @@
         {% with subject=course.subject %}
          <div class="col-xl-3 mx-4 p-0">
            <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted text-white bg-secondary mb-3 rounded-3" style="width: 13rem; height: 14rem">
+           <div class="card border-muted text-white bg-secondary mb-3" style="width: 13rem; height: 14rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
