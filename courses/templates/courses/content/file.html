@@ -18,9 +18,11 @@
 
 <div class="container p-0 bg-light text-black">
 <!--<h3>{{ item.title }}</h3>-->
+    <div class="container">
+
     <iframe src="{{ item.file.url }}" width="100%" height="400px" >
     </iframe>
-
+</div>
       {{ item.title|upper|linebreaks }}
 <!--     {{ item.content|linebreaks }}-->
       <a href="{{ item.file.url }}" class="btn btn-dark">Go to file</a>
