@@ -1,7 +1,7 @@
-<div class="container p-0" style="width: 22rem;">
-<a href="{{ item.file.url }}" class="btn btn-dark btn-sm my-2 w-30">Go to file</a>
-</div>
-<br><br>
+<!--<div class="container p-0" style="width: 22rem;">-->
+<!--<a href="{{ item.file.url }}" class="btn btn-dark btn-sm my-2 w-30">Go to file</a>-->
+<!--</div>-->
+<!--<br><br>-->
 
 <!--        <h4>{{ item.title|title }}</h4>-->
 
@@ -15,3 +15,13 @@
 <!--    <a href="{{ item.file.url }}" class="btn btn-dark">Go to file</a>-->
 <!--  </div>-->
 <!--</div>-->
+
+<div class="container p-3 bg-light text-black">
+<!--<h3>{{ item.title }}</h3>-->
+    <iframe src="{{ item.file.url }}" width="387px" height="300px" >
+    </iframe>
+
+      {{ item.title|upper|linebreaks }}
+<!--     {{ item.content|linebreaks }}-->
+      <a href="{{ item.file.url }}" class="btn btn-dark">Go to file</a>
+</div>
