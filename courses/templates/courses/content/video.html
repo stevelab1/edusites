@@ -1,8 +1,7 @@
 {% load embed_video_tags %}
 
-<div class="container p-0" style="">
-    <div class="card">
-          <div class="card-body text-center p-0 py-1">
+<div class="container p-0 bg-light text-center" style="">
+
 
 
 <!--  <div class="row">-->
@@ -16,11 +15,9 @@
 <!--  </div>-->
 <!--</div>-->
 <!--            {{ item.title|upper|linebreaks }}-->
-<!--        {{ item.content|linebreaks }}-->
 {% video item.url "335 x 100%" %}
-                  <h5 class="card-title">{{ item.title }}</h5>
-</div>
-
-</div>
-
+          <br>
+    <h5> {{ item.title }}</h5>
+        {{ item.content }}
+          <br>
 </div>
