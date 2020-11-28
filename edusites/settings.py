@@ -148,8 +148,8 @@ STATICFILES_DIRS = (
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
 MEDIA_URL = '/media/'
-DEFAULT_FILE_STORAGE = 'cloudinary_storage.storage.MediaCloudinaryStorage'
-# MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
+# DEFAULT_FILE_STORAGE = 'cloudinaryinary_storage.storage.MediaCloudinaryStorage'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
 
 # LOGIN_REDIRECT_URL = 'dashboard'
 LOGIN_REDIRECT_URL = reverse_lazy('student_course_list')
