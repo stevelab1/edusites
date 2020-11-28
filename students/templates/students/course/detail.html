@@ -53,7 +53,7 @@
       <div class="row">
           {% for content in module.contents.all %}
           {% with item=content.item %}
-          <div class="col-xl-4">
+          <div class="col-xl-4 mb-4">
               {{ item.render }}
           </div>
           {% endwith %}
