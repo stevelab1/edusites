@@ -3,9 +3,7 @@
 <div class="container p-0" style="">
   <div class="card" style="">
 
-{% thumbnail item.file "320x229" crop="center" as im %}
-    <img src="{{ im.url }}">
-{% endthumbnail %}
+<img src="{{ item.file.url }}" class="card-img-top" alt="Image of {{ item.title }}">
 
 
     <div class="card-body p-3">
@@ -17,19 +15,3 @@
 
 
 
-<!--{% for image in moodboard %}-->
-<!--  <div class="image">-->
-<!--    <a href="{{ image.get_absolute_url }}">-->
-<!--      {% thumbnail image.image "300x300" crop="10%" as im %}-->
-<!--        <a href="{{ image.get_absolute_url }}">-->
-<!--          <img src="{{ im.url }}">-->
-<!--        </a>-->
-<!--      {% endthumbnail %}-->
-<!--    </a>-->
-<!--    <div class="info">-->
-<!--      <a href="{{ image.get_absolute_url }}" class="title">-->
-<!--        {{ image.title }}-->
-<!--      </a>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--{% endfor %}-->
