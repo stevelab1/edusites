@@ -1,6 +1,13 @@
+{% load thumbnail %}
+
 <div class="container p-0" style="">
   <div class="card" style="">
-    <img src="{{ item.file.url }}" class="card-img-top" alt="Image of {{ item.title }}">
+
+{% thumbnail item.file "232x232" crop="center" as im %}
+    <img src="{{ im.url }}" width="im.width" height="{{ im.height }}">
+{% endthumbnail %}
+
+
     <div class="card-body p-3">
       <h5 class="card-title">{{ item.title }}</h5>
       <p class="card-text">{{ item.text }}</p>
@@ -9,3 +16,20 @@
 </div>
 
 
+
+<!--{% for image in moodboard %}-->
+<!--  <div class="image">-->
+<!--    <a href="{{ image.get_absolute_url }}">-->
+<!--      {% thumbnail image.image "300x300" crop="10%" as im %}-->
+<!--        <a href="{{ image.get_absolute_url }}">-->
+<!--          <img src="{{ im.url }}">-->
+<!--        </a>-->
+<!--      {% endthumbnail %}-->
+<!--    </a>-->
+<!--    <div class="info">-->
+<!--      <a href="{{ image.get_absolute_url }}" class="title">-->
+<!--        {{ image.title }}-->
+<!--      </a>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--{% endfor %}-->
