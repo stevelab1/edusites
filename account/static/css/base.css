@@ -73,6 +73,24 @@ h1 {
     float:left;
 }
 
+.module_c {
+    padding:10px 0px 0px 0px 0px;
+    float:left;
+    width:100%;
+}
+
+.module h3 {
+    margin:20px 0 0;
+    padding:0;
+    width:100%;
+}
+
+.module p {
+    margin:10px 0 20px;
+    width:100%;
+    float:left;
+}
+
 #header {
     background:white;
     overflow:auto;
