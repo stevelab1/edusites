@@ -40,7 +40,7 @@ h1 {
 .module {
     padding:10px 0px 0px 0px 0px;
     float:left;
-    width:62%;
+    width:60%;
 }
 
 .module h3 {
@@ -120,7 +120,7 @@ h1 {
 }
 
 .contents {
-    width:16vmax;
+    width:17vmax;
     padding:10px;
     float:left;
     background:#f9f9f9;
