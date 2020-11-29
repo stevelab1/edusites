@@ -16,14 +16,13 @@
   </ol>
 </nav>
 
-
 <div class="col mx-3">
+     <h1>
+        {{ object.title|upper }}
+     </h1>
 
   {% with subject=object.subject %}
     <div class="module">
-      <h1>
-        {{ object.title|upper }}
-     </h1>
       <br><h2>Overview</h2>
 
       {{ object.overview|linebreaks }}
