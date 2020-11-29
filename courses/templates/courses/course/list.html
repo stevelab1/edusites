@@ -69,7 +69,7 @@
 </div>
   <br>
 
-  <div class="contents text-white bg-secondary mb-3 rounded-3" style="min-width: 6rem; max-width: 14rem;">
+  <div class="contents text-white bg-secondary mb-3 rounded-3" style="min-width: 3rem; max-width: 14rem;">
     <h6>SUBJECTS</h6>
     <ul id="browse">
       <li {% if not subject %}class="selected"{% endif %}>
@@ -85,7 +85,7 @@
     </ul>
   </div>
 
-  <div class="module">
+  <div class="module" style="min-width: 6rem; max-width: 140rem;">
     <div class="container mx-1">
      <div class="row gx-3">
        {% for course in courses %}
