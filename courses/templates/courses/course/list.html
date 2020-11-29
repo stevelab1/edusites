@@ -85,13 +85,13 @@
     </ul>
   </div>
   <div class="module">
-    <div class="container">
-     <div class="row gx-5">
+    <div class="container mx-1">
+     <div class="row gx-3">
        {% for course in courses %}
         {% with subject=course.subject %}
-         <div class="col-xl-3 mx-4 p-0">
+         <div class="col-sm">
            <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted text-white bg-secondary mb-3" style="width: 13rem; height: 14rem">
+           <div class="card border-muted text-white bg-secondary mb-3" style="min-width: 11.5rem; max-width: 43rem; height: 14rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
