@@ -40,7 +40,6 @@ h1 {
 .module {
     padding:10px 0px 0px 0px 0px;
     float:left;
-    width:60%;
 }
 
 .module h3 {
@@ -120,8 +119,7 @@ h1 {
 }
 
 .contents {
-    width:17.2vmax;
-    padding:10px;
+    padding:0px;
     float:left;
     background:#f9f9f9;
     color: #373232;
@@ -136,8 +134,8 @@ h1 {
 }
 
 .contents ul li {
-    margin:0 0 10px 0;
-    padding:4px 10px 10px;
+    margin:0 0 0px 0 0 ;
+    padding:px 0px 0px;
     overflow:auto;
     cursor:move;
 }

@@ -67,31 +67,64 @@
         </div>
 
 </div>
-  <br>
 
-  <div class="contents text-white bg-secondary mb-3 rounded-3">
-    <h6>SUBJECTS</h6>
-    <ul id="browse">
-      <li {% if not subject %}class="selected"{% endif %}>
-        <a href="{% url "course_list" %}">All</a>
+<!--  <div class="contents text-white bg-secondary mb-3 rounded-3">-->
+<!--    <h6>SUBJECTS</h6>-->
+<!--    <ul id="browse">-->
+<!--      <li {% if not subject %}class="selected"{% endif %}>-->
+<!--        <a href="{% url "course_list" %}">All</a>-->
+<!--      </li>-->
+<!--      {% for s in subjects %}-->
+<!--        <li {% if subject == s %}class="selected"{% endif %}>-->
+<!--          <a href="{% url "course_list_subject" s.slug %}">-->
+<!--            {{ s.title }}<span class="badge bg-outline text-white">{{ s.total_courses }}</span>-->
+<!--          </a>-->
+<!--        </li>-->
+<!--      {% endfor %}-->
+<!--    </ul>-->
+<!--  </div>-->
+
+
+  <div class="contents p-0 mx-3 mb-3 rounded-3 text-white">
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-secondary rounded-3 p-1">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+          <li class="nav-item" {% if not subject %}class="selected"{% endif %}>
+        <a class="nav-link active" aria-current="page" href="{% url "course_list" %}">All</a>
       </li>
       {% for s in subjects %}
-        <li {% if subject == s %}class="selected"{% endif %}>
-          <a href="{% url "course_list_subject" s.slug %}">
-            {{ s.title }}<span class="badge bg-outline text-white">{{ s.total_courses }}</span>
+        <li class="nav-item" {% if subject == s %}class="selected"{% endif %}>
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_subject" s.slug %}">
+            {{ s.title }}
           </a>
         </li>
       {% endfor %}
-    </ul>
+
+      </ul>
+    </div>
   </div>
+</nav>
+    </div>
+
+<br><br>
+<br>
+
+
+
   <div class="module">
-    <div class="container mx-1">
+    <div class="container">
      <div class="row gx-3">
        {% for course in courses %}
         {% with subject=course.subject %}
-         <div class="col-sm">
+         <div class="col-sm-4">
            <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted text-white bg-secondary mb-3" style="min-width: 12.6rem; max-width: 50rem; height: 15rem">
+           <div class="card border-muted text-white bg-secondary mb-3" style="height: 15rem">
              <div class="card-header text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
