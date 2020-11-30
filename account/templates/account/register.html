@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% block title %}Create an account{% endblock %}
 {% block content %}
+<div class="container">
+
   <h1>Create an account</h1>
   <p>Join using the form below:</p>
   <form action="." method="post">
@@ -8,4 +10,5 @@
     {% csrf_token %}
     <p><input type="submit" value="Create my account"></p>
   </form>
+  </div>
 {% endblock %}

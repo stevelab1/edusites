@@ -5,6 +5,8 @@
 {% endblock %}
 
 {% block content %}
+<div class="container">
+
   <h1>
     Sign up
   </h1>
@@ -15,5 +17,6 @@
       {% csrf_token %}
       <p><input type="submit" value="Create my account"></p>
     </form>
+  </div>
   </div>
 {% endblock %}
