@@ -11,7 +11,7 @@
 <div class="container">
   <div class="module">
     {% for course in object_list %}
-      <div class="course-info">
+      <div class="course-info bg-light bg-gradient border border-white mb-4" style="width:100%">
         <h3>{{ course.title }}</h3>
         <p>
           <a href="{% url "course_edit" course.id %}">Edit</a>
