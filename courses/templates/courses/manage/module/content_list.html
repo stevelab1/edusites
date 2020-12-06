@@ -7,34 +7,50 @@
 
 {% block content %}
 {% with course=module.course %}
+      <div class="container-fluid mb-3">
+
   <h1>Course "{{ course.title }}"</h1>
-  <div class="contents">
-    <h4>Modules</h4>
-    <ul id="modules">
-      {% for m in course.modules.all %}
-        <li data-id="{{ m.id }}" {% if m == module %}
-         class="selected"{% endif %}>
-          <a href="{% url "module_content_list" m.id %}">
-            <span>
-              Module <span class="order">{{ m.order|add:1 }}</span>
-            </span>
-            <br>
-            {{ m.title }}
-          </a>
-        </li>
-      {% empty %}
-        <li>No modules yet.</li>
-      {% endfor %}
-    </ul>
-    <p><a href="{% url "course_module_update" course.id %}">
-    Edit modules</a></p>
+       </div>
+      <div class="container-fluid p-3">
+
+  <div class="contents_c p-3 mb-3 rounded-3 bg-white">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light bg-gradient rounded-3 p-1">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarToggler">
+          <ul id="modules">
+            {% for m in course.modules.all %}
+              <li data-id="{{ m.id }}" {% if m == module %}
+               class="selected"{% endif %}>
+                <a href="{% url "module_content_list" m.id %}">
+                  <span>
+                    Module <span class="order">{{ m.order|add:1 }}</span>
+                  </span>
+                  <br>
+                  {{ m.title }}
+                </a>
+              </li>
+            {% empty %}
+              <li>No modules yet.</li>
+            {% endfor %}
+            <button type="button" class="btn btn-link text-dark"><a href="{% url "course_module_update" course.id %}">Edit modules</a></button>
+          </ul>
+        </div>
+    </nav>
   </div>
-  <div class="module">
+  </div>
+
+
+
+
+  <div class="module mx-4">
     <h2>Module {{ module.order|add:1 }}: {{ module.title }}</h2>
     <h3>Module contents:</h3>
+    <br>
     <div id="module-contents_b">
       {% for content in module.contents.all %}
-        <div data-id="{{ content.id }}">
+        <div class="p-3 mb-3 rounded-3 bg-light bg-gradient border border-white" data-id="{{ content.id }}">
           {% with item=content.item %}
             <p>{{ item }} ({{ item|model_name }})</p>
             <a href="{% url "module_content_update" module.id item|model_name item.id %}">
