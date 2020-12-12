@@ -131,6 +131,7 @@
        {% for course in courses %}
         {% with subject=course.subject %}
          <div class="col-12 col-md-6 col-lg-4">
+              <a href="{% url "course_detail" course.slug %}">
            <div class="card border-muted text-white bg-secondary mb-4">
                <img src="media/{{ course.file }}" class="card-img-top" alt="{{ course.title }}" onerror="this.style.display='none'">
              <div class="card-body">
@@ -143,6 +144,7 @@
                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
              </div>
            </div>
+             </a>
 <!--          <div class="card-footer text-center"><small class="text-muted"><a href="{% url "course_list_subject" subject.slug %}" class="card-link">{{ subject }}</small></a></div>-->
 <!--        </div>-->
       </div>
