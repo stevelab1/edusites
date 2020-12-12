@@ -28,7 +28,7 @@ class Course(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
-    file = models.FileField(upload_to='files', null=True)
+    file = models.FileField(upload_to='images', null=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     students = models.ManyToManyField(User,
