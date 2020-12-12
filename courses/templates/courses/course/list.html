@@ -125,16 +125,14 @@
 
 
 
-  <div class="module">
+  <div class="">
     <div class="container">
-     <div class="row gx-3">
+     <div class="row" data-masonry='{"percentPosition": true }'>
        {% for course in courses %}
         {% with subject=course.subject %}
-         <div class="col col-xl-3">
-           <a href="{% url "course_detail" course.slug %}">
-           <div class="card border-muted text-white bg-secondary mb-3" style="min-width: 14.7rem; max-width: 20.5rem; height: 17rem">
-             <div class="card-header text-center">{{ course.title }}</div>
-<!--               <img src="{{ course.file.url }}" class="card-img-top" alt="Image of {{ course.title }}">-->
+         <div class="col-12 col-md-6 col-lg-4">
+           <div class="card border-muted text-white bg-secondary mb-4">
+               <img src="media/{{ course.file }}" class="card-img-top" alt="{{ course.title }}" onerror="this.style.display='none'">
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
                <h6 class="card-text">{{ course.overview }}</h6>
@@ -145,7 +143,6 @@
                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
              </div>
            </div>
-           </a>
 <!--          <div class="card-footer text-center"><small class="text-muted"><a href="{% url "course_list_subject" subject.slug %}" class="card-link">{{ subject }}</small></a></div>-->
 <!--        </div>-->
       </div>

@@ -28,7 +28,7 @@ class Course(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
-    # file = models.FileField(upload_to='images', default='https://res.cloudinary.com/hmklz8dtf/image/upload/v1/media/images/python_xpcvgr')
+    file = models.FileField(upload_to='images', null=True, blank=True)
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     students = models.ManyToManyField(User,
