@@ -28,13 +28,15 @@ class Course(models.Model):
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
+    file = models.FileField(upload_to='images', null= True, blank= True)
     created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
     students = models.ManyToManyField(User,
                                       related_name='courses_joined',
                                       blank=True)
 
     class Meta:
-        ordering = ['-created']
+        ordering = ['-updated']
 
     def __str__(self):
         return self.title

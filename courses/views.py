@@ -32,7 +32,7 @@ class OwnerEditMixin(object):
 class OwnerCourseMixin(OwnerMixin,
                        LoginRequiredMixin):
     model = Course
-    fields = ['subject', 'title', 'slug', 'overview']
+    fields = ['subject', 'title', 'slug', 'overview', 'file']
     success_url = reverse_lazy('manage_course_list')
 
 
@@ -192,7 +192,9 @@ class CourseListView(TemplateResponseMixin, View):
         subjects = Subject.objects.annotate(
                        total_courses=Count('courses'))
         courses = Course.objects.annotate(
-                       total_modules=Count('modules'))
+                       total_modules=Count('modules')) \
+            .order_by('-updated')
+
         if subject:
             subject = get_object_or_404(Subject, slug=subject)
             courses = courses.filter(subject=subject)
