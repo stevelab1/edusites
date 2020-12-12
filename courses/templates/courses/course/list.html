@@ -128,7 +128,7 @@
          <div class="col-12 col-md-6 col-lg-4">
               <a href="{% url "course_detail" course.slug %}">
            <div class="card text-dark shadow p-3 mb-4 bg-white rounded">
-               <img src="{{ course.file }}" class="card-img-top" alt="{{ course.title }}" onerror="this.style.display='none'">
+               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top" alt="{{ course.title }}" onerror="this.style.display='none'">
              <div class="card-header bg-white text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
