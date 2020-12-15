@@ -42,18 +42,22 @@
     </div>
     <div class="tab-content">
       <div id="learn" class="tab-pane active">
-        <div class="card-body">
+        <div class="card-body" style="height: 125px">
           {% if subject %}
              <h5 class="card-title"> {{ subject.title }} Courses</h5>
              <p class="card-text"> {{ subject.content}} </p>
           {% else %}
              <h5 class="card-title">What do you want to learn?</h5>
              <p class="card-text">Browse Courses</p>
+            <!--             <p class="card-text">All the best courses</p>-->
+            <!--             <p class="card-text">Top earning skills</p>-->
+            <!--             <p class="card-text">Most loved/in-demand technologies</p>-->
+<!--             <p class="card-text">We've curated the best courses available online into Learning Paths</p>-->
           {% endif %}
         </div>
       </div>
       <div id="teach" class="tab-pane fade">
-        <div class="card-body">
+        <div class="card-body" style="height: 125px">
         <h5 class="card-title">Want to create your own courses?</h5>
         <p class="card-text">Start teaching today</p>
         <a href="{% url "manage_course_list" %}" class="btn btn-primary">Create a course</a>
