@@ -42,7 +42,7 @@
     </div>
     <div class="tab-content">
       <div id="learn" class="tab-pane active">
-        <div class="card-body" style="height: 115px">
+        <div class="card-body" style="height: 100px">
           {% if subject %}
              <h5 class="card-title"> {{ subject.title }} Courses</h5>
              <p class="card-text"> {{ subject.content}} </p>
@@ -57,7 +57,7 @@
         </div>
       </div>
       <div id="teach" class="tab-pane fade">
-        <div class="card-body" style="height: 115px">
+        <div class="card-body" style="height: 100px">
             <h5 class="card-title">Live Chat</h5>
 
             <p><a href="{% url "chat:course_chat_room" "11" %}" target="_blank">
