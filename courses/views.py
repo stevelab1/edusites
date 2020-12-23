@@ -33,7 +33,7 @@ class OwnerCourseMixin(OwnerMixin,
                        LoginRequiredMixin,
                        PermissionRequiredMixin):
     model = Course
-    fields = ['subject', 'title', 'slug', 'overview', 'file']
+    fields = ['subject', 'title', 'categories', 'slug', 'overview', 'file']
     success_url = reverse_lazy('manage_course_list')
 
 
