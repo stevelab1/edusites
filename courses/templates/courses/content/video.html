@@ -1,26 +1,41 @@
 {% load embed_video_tags %}
 
-<div class="container p-0" style="">
-    <div class="card">
-          <div class="card-body text-center p-1">
 
 
-<!--  <div class="row">-->
-<!--    <div class="col">-->
-<!--        {% video item.url "305 x 200" query="rel=0&wmode=transparent" %}-->
-<!--    </div>-->
-<!--    <div class="col">-->
-<!--        {{ item.title|upper|linebreaks }}-->
-<!--        {{ item.content|linebreaks }}-->
-<!--    </div>-->
-<!--  </div>-->
+<div class="container p-0">
+<!--<h3>{{ item.title }}</h3>-->
+
+          {% video item.url "100% x 199" %}
+
+
+
+<!--      {{ item.title|linebreaks }}-->
+<!--     {{ item.content|linebreaks }}-->
+<!--      <a href="{{ item.file.url }}" class="btn btn-dark">Go to file</a>-->
 <!--</div>-->
-<!--            {{ item.title|upper|linebreaks }}-->
-<!--        {{ item.content|linebreaks }}-->
-{% video item.url "335 x 100%" %}
-                  <h5 class="card-title">{{ item.title }}</h5>
-</div>
+
+<!--<div class="container p-0" style="">-->
+<!--    <div class="card">-->
+<!--          <div class="card-body text-center p-1">-->
+
+
+<!--&lt;!&ndash;  <div class="row">&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;        {% video item.url "305 x 200" query="rel=0&wmode=transparent" %}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div class="col">&ndash;&gt;-->
+<!--&lt;!&ndash;        {{ item.title|upper|linebreaks }}&ndash;&gt;-->
+<!--&lt;!&ndash;        {{ item.content|linebreaks }}&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash;            {{ item.title|upper|linebreaks }}&ndash;&gt;-->
+<!--&lt;!&ndash;        {{ item.content|linebreaks }}&ndash;&gt;-->
+<!--{% video item.url "335 x 100%" %}-->
+<!--                  <h5 class="card-title">{{ item.title }}</h5>-->
+<!--</div>-->
+
+<!--</div>-->
 
 </div>
 
-</div>

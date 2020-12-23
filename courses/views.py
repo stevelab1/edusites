@@ -13,7 +13,7 @@ from django.db.models import Count
 
 from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 from students.forms import CourseEnrollForm
-from .models import Course, Module, Content, Subject
+from .models import Course, Module, Content, Subject, Category
 from .forms import ModuleFormSet
 
 
@@ -96,7 +96,7 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
     template_name = 'courses/manage/content/form.html'
 
     def get_model(self, model_name):
-        if model_name in ['text', 'video', 'image', 'file']:
+        if model_name in ['post', 'video', 'image', 'file']:
             return apps.get_model(app_label='courses',
                                   model_name=model_name)
         return None
@@ -189,18 +189,27 @@ class CourseListView(TemplateResponseMixin, View):
     model = Course
     template_name = 'courses/course/list.html'
 
-    def get(self, request, subject=None):
+    def get(self, request, subject=None, category=None):
         subjects = Subject.objects.annotate(
                        total_courses=Count('courses'))
         courses = Course.objects.annotate(
                        total_modules=Count('modules')) \
             .order_by('-updated')
+        categories = Category.objects.all()
+        # cats = Category.objects.all()
+
+        if category:
+            category = get_object_or_404(Category, slug=category)
+            courses = courses.filter(categories=category)
 
         if subject:
             subject = get_object_or_404(Subject, slug=subject)
             courses = courses.filter(subject=subject)
         return self.render_to_response({'subjects': subjects,
                                         'subject': subject,
+                                        'category': category,
+                                        'categories': categories,
+                                        # 'cats': cats,
                                         'courses': courses})
 
 

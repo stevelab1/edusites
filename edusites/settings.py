@@ -46,6 +46,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'social_django',
     'moodboard.apps.MoodboardConfig',
+    'ckeditor',
     'sorl.thumbnail',
     'actions.apps.ActionsConfig',
     'students.apps.StudentsConfig',

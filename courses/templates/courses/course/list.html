@@ -102,7 +102,7 @@
 
   <div class="contents p-0 mx-3 mb-3 rounded-3">
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-secondary rounded-3 p-1">
+<nav class="navbar navbar-expand-lg navbar-light bg-white rounded-3 p-0">
   <div class="container-fluid">
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -110,17 +110,34 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
-          <li class="nav-item" {% if not subject %}class="selected"{% endif %}>
+          <li class="nav-item rounded-pill" {% if not subject and not category %}class="selected" style="background-color: #e9ecef"{% endif %}>
         <a class="nav-link active" aria-current="page" href="{% url "course_list" %}">All</a>
       </li>
       {% for s in subjects %}
-        <li class="nav-item" {% if subject == s %}class="selected"{% endif %}>
+        <li class="nav-item rounded-pill" {% if subject == s %}class="selected" style="background-color: #e9ecef" {% endif %}>
           <a class="nav-link active" aria-current="page" href="{% url "course_list_subject" s.slug %}">
             {{ s.title }}
           </a>
         </li>
       {% endfor %}
 
+
+<!-- <li><a class="nav-link active" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap-fill" viewBox="0 1 16 17">-->
+<!--  <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z"/>-->
+<!--</svg></a></li>-->
+          <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
+
+
+{% for c in categories %}
+
+        <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
+
+         {{ c.title }}
+                      </a>
+
+        </li>
+      {% endfor %}
       </ul>
     </div>
   </div>
@@ -140,7 +157,7 @@
          <div class="col-12 col-md-6 col-lg-4">
               <a href="{% url "course_detail" course.slug %}">
            <div class="card text-dark shadow p-3 mb-4 bg-white rounded">
-               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top" alt="{{ course.title }}" onerror="this.style.display='none'">
+               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
              <div class="card-header bg-white text-center">{{ course.title }}</div>
              <div class="card-body">
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
@@ -150,6 +167,11 @@
              <div class="card-footer bg-white border-0">
                <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} modules</span>
                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
+<!--                        {% for c in cats %}-->
+<!--                                <span class="badge rounded-pill bg-secondary"> {{ c }} </span>-->
+<!--                     {% endfor %}-->
+
+
              </div>
            </div>
              </a>
@@ -162,5 +184,33 @@
     </div>
   </div>
 </div>
+
+
+<!--  <div class="contents p-0 mx-3 mb-3 rounded-3">-->
+
+<!--<nav class="navbar navbar-expand-lg navbar-dark bg-secondary rounded-3 p-1">-->
+<!--  <div class="container-fluid">-->
+<!--    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">-->
+<!--      <span class="navbar-toggler-icon"></span>-->
+<!--    </button>-->
+<!--    <div class="collapse navbar-collapse" id="navbarToggler">-->
+<!--      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">-->
+<!--      {% for c in categories %}-->
+
+<!--        <li class="nav-item">-->
+<!--          <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">-->
+
+<!--         {{ c.title }}-->
+<!--                      </a>-->
+
+<!--        </li>-->
+<!--      {% endfor %}-->
+
+
+<!--      </ul>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</nav>-->
+<!--    </div>-->
 
 {% endblock %}

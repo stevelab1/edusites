@@ -40,6 +40,14 @@ h1 {
 .navbar-toggler  {  border: none;  }
 
 
+.nav-pills .nav-link.active, .nav-pills .show>.nav-link {
+color: #000;
+    border:1px solid #ccc;
+
+background-color: #ffffff;
+}
+
+
 .module {
     padding:10px 0px 0px 0px 0px;
     float:left;
@@ -137,18 +145,18 @@ h1 {
 }
 
 .contents ul li {
-    margin:0 0 0px 0 0 ;
-    padding:px 0px 0px;
+    margin:0px 0px 0px 0px 0px;
+    padding:0px 10px 0px 10px;
     overflow:auto;
-    cursor:move;
+    cursor:pointer;
 }
 
 .contents ul li.selected {
-    background:#686f74;
+    background:#e9ecef;
 }
 
 .contents ul li:hover {
-    background:#686f74;
+    background:#e9ecef;
 }
 
 .contents ul span {
@@ -165,7 +173,7 @@ h1 {
 
 .contents ul a:hover {
     color:#ffffff;
-    cursor:move;
+    cursor:pointer;
 }
 
 .contents_b {
@@ -188,7 +196,7 @@ h1 {
     margin:0 0 0px 0;
     padding:4px 10px 5px;
     overflow:auto;
-    cursor:move;
+    cursor:pointer;
 }
 
 .contents_b ul li.selected {
@@ -213,7 +221,7 @@ h1 {
 
 .contents_b ul a:hover {
     color:#4dcc43;
-    cursor:move;
+    cursor:pointer;
 }
 
 .contents_c {
@@ -394,11 +402,12 @@ ul#course-modules li:hover {
 }
 
 #module-contents_b input[type=submit] {
-    color:#3fad37;
-    background:none;
-    margin:-25px 50px 0;
+    color:#fff;
+    font-size:15px;
+    background:#3fad37;
+    margin:-24px 10px 0;
     padding:0px 5px;
-    float:left;
+    float:right;
     text-transform:none;
 }
 

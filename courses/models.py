@@ -4,6 +4,7 @@ from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
 from django.template.loader import render_to_string
 from .fields import OrderField
+from ckeditor.fields import RichTextField
 
 
 class Subject(models.Model):
@@ -18,6 +19,17 @@ class Subject(models.Model):
         return self.title
 
 
+class Category(models.Model):
+    title = models.CharField(max_length=30)
+    slug = models.SlugField(max_length=200, unique=True)
+
+
+    class Meta:
+        ordering = ['title']
+
+    def __str__(self):
+        return self.title
+
 class Course(models.Model):
     owner = models.ForeignKey(User,
                               related_name='courses_created',
@@ -25,6 +37,8 @@ class Course(models.Model):
     subject = models.ForeignKey(Subject,
                                 related_name='courses',
                                 on_delete=models.CASCADE)
+    categories = models.ManyToManyField(Category,
+                                related_name='courses')
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
@@ -64,7 +78,7 @@ class Content(models.Model):
     content_type = models.ForeignKey(ContentType,
                                      on_delete=models.CASCADE,
                                      limit_choices_to={'model__in':(
-                                     'text',
+                                     'post',
                                      'video',
                                      'image',
                                      'file')})
@@ -96,8 +110,9 @@ class ItemBase(models.Model):
             f'courses/content/{self._meta.model_name}.html',
             {'item': self})
 
-class Text(ItemBase):
-    content = models.TextField()
+class Post(ItemBase):
+    # content = models.TextField()
+    content = RichTextField(blank=True, null=True)
 
 class File(ItemBase):
     file = models.FileField(upload_to='files')
