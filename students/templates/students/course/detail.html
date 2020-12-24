@@ -8,12 +8,12 @@
 
 {% block content %}
 
-
+<div>
 <!--  <h1>-->
 <!--    {{ course.title|upper }}-->
 <!--  </h1>-->
 <nav aria-label="breadcrumb">
-  <ol class="breadcrumb p-1 m-2">
+  <ol class="breadcrumb p-1 m-2 bg-light rounded">
     <li class="breadcrumb-item"><a href="/"><svg width="1em" height="1em" viewBox="0 2 17 15.5" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
   <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
@@ -22,10 +22,34 @@
     <li class="breadcrumb-item active" aria-current="page">{{ course.title }}</li>
   </ol>
 </nav>
-  <div class="contents_b">
+
+<!--  <div class="contents_b">-->
 <!--    <h3>Modules</h3>-->
-    <ul id="modules" class="list-group list-group-horizontal">
-      {% for m in object.modules.all %}
+<!--    <ul id="modules" class="list-group list-group-horizontal">-->
+<!--      {% for m in object.modules.all %}-->
+<!--        <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>-->
+<!--          <a href="{% url "student_course_detail_module" object.id m.id %}">-->
+<!--            <span>-->
+<!--              <span class="order">{{ m.order|add:1 }}. {{ m.title }}</span>-->
+<!--            </span>-->
+<!--            <br>-->
+<!--            {{ m.order|add:1 }}. {{ m.title }}-->
+<!--          </a>-->
+<!--        </li>-->
+<!--      {% empty %}-->
+<!--        <li>No modules yet.</li>-->
+<!--      {% endfor %}-->
+<!--    </ul>-->
+<!--  </div>-->
+
+<div class="contents_b sticky-top">
+    <nav class="navbar navbar-expand-lg navbar-dark p-0">
+        <div class="container-fluid p-0">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navbarToggler">
+                <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+                   {% for m in object.modules.all %}
         <li data-id="{{ m.id }}" {% if m == module %}class="selected"{% endif %}>
           <a href="{% url "student_course_detail_module" object.id m.id %}">
             <span>
@@ -38,30 +62,48 @@
       {% empty %}
         <li>No modules yet.</li>
       {% endfor %}
-    </ul>
-  </div>
-  <div class="module_b">
-     <h1>
+                </ul>
+            </div>
+        </div>
+</div>
+<div class="container">
+    <div class="row">
+  <div class="col-xl-12 mb-4">
+     <p><h1>
        {{ course.title|upper }}
      </h1>
-     <h1>Module {{ module.order|add:1 }}: {{ module.title }}</h1>
+     <h1>Module {{ module.order|add:1 }}: {{ module.title }}</h1></p>
      <p><a href="{% url "chat:course_chat_room" object.id %}" target="_blank">
       <button type="button" class="btn btn-dark"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
   <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></button></a></p>
   </div>
-
-<div class="">
-    <div class="container">
-        <div class="row" data-masonry='{"percentPosition": true }'>
-          {% for content in module.contents.all %}
-            {% with item=content.item %}
-            <div class="col-12 col-md-6 col-lg-4 mb-3">
-                {{ item.render }}
-            </div>
-            {% endwith %}
-          {% endfor %}
         </div>
+</div>
+
+<div class="container">
+    <div class="row">
+        {% for content in module.contents.all %}
+        {% with item=content.item %}
+        <div class="col-xl-12 mb-4">
+            {{ item.render }}
+        </div>
+        {% endwith %}
+        {% endfor %}
     </div>
 </div>
 
 {% endblock %}
+
+<!--<div class="">-->
+<!--    <div class="container">-->
+<!--        <div class="row" data-masonry='{"percentPosition": true }'>-->
+<!--          {% for content in module.contents.all %}-->
+<!--            {% with item=content.item %}-->
+<!--            <div class="col-12 col-md-6 col-lg-4 mb-3">-->
+<!--                {{ item.render }}-->
+<!--            </div>-->
+<!--            {% endwith %}-->
+<!--          {% endfor %}-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

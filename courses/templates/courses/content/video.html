@@ -1,11 +1,13 @@
-{% load embed_video_tags %}
+<!--{% load embed_video_tags %}-->
 
+<div class="ratio ratio-16x9">
+  {% video item.url %}
+</div>
 
-
-<div class="container p-0">
+<!--<div class="container p-0">-->
 <!--<h3>{{ item.title }}</h3>-->
 
-          {% video item.url "100% x 199" %}
+<!--          {% video item.url "100% x 199" %}-->
 
 
 
@@ -37,5 +39,5 @@
 
 <!--</div>-->
 
-</div>
+<!--</div>-->
 
