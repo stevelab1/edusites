@@ -22,6 +22,8 @@ urlpatterns = [
      views.CourseModuleUpdateView.as_view(),
      name='course_module_update'),
 
+    path('search/', views.search, name='search'),
+
     path('module/<int:module_id>/content/<model_name>/create/',
          views.ContentCreateUpdateView.as_view(),
          name='module_content_create'),

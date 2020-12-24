@@ -5,6 +5,7 @@ from django.contrib.contenttypes.fields import GenericForeignKey
 from django.template.loader import render_to_string
 from .fields import OrderField
 from ckeditor.fields import RichTextField
+from django.urls import reverse
 
 
 class Subject(models.Model):
@@ -55,6 +56,9 @@ class Course(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse('courses:course_detail', args=[self.slug])
 
 
 class Module(models.Model):

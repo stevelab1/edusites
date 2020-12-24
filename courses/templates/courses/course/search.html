@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block title %}Search{% endblock %}
+
+{% block content %}
+  {% if query %}
+    <h1>Course pages containing "{{ query }}"</h1>
+    <h3>
+      {% with results.count as total_results %}
+        Found {{ total_results }} result{{ total_results|pluralize }}
+      {% endwith %}
+    </h3>
+    {% for course in results %}
+     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>
+{{ course.overview|truncatewords_html:5 }}</a></p>
+    {% empty %}
+      <p>There are no results for your query.</p>
+    {% endfor %}
+
+<p><a href="{% url "search" %}"><u>Search again</u></a></p>
+  {% else %}
+    <h1>Search for courses</h1>
+    <form method="get">
+      {{ form.as_p }}
+      <input type="submit" value="Search">
+    </form>
+  {% endif %}
+{% endblock %}

@@ -15,6 +15,9 @@ from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 from students.forms import CourseEnrollForm
 from .models import Course, Module, Content, Subject, Category
 from .forms import ModuleFormSet
+from django.contrib.postgres.search import SearchVector
+from .forms import SearchForm
+from django.shortcuts import render
 
 
 class OwnerMixin(object):
@@ -222,3 +225,22 @@ class CourseDetailView(DetailView):
         context['enroll_form'] = CourseEnrollForm(
                                    initial={'course':self.object})
         return context
+
+
+def search(request):
+    form = SearchForm()
+    query = None
+    results = []
+    if 'query' in request.GET:
+        form = SearchForm(request.GET)
+        if form.is_valid():
+            query = form.cleaned_data['query']
+            results = Course.objects.annotate(
+                search=SearchVector('subject', 'categories', 'title', 'slug', 'overview', 'owner'),
+            ).filter(search=query)
+    return render(request,
+                  'courses/course/search.html',
+                  {'form': form,
+                   'query': query,
+                   'results': results})
+
