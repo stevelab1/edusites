@@ -15,7 +15,7 @@ from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 from students.forms import CourseEnrollForm
 from .models import Course, Module, Content, Subject, Category
 from .forms import ModuleFormSet
-from django.contrib.postgres.search import SearchVector
+from django.contrib.postgres.search import TrigramSimilarity
 from .forms import SearchForm
 from django.shortcuts import render
 
@@ -236,8 +236,10 @@ def search(request):
         if form.is_valid():
             query = form.cleaned_data['query']
             results = Course.objects.annotate(
-                search=SearchVector('subject', 'categories', 'title', 'slug', 'overview', 'owner'),
-            ).filter(search=query)
+
+                similarity=TrigramSimilarity('title', query),
+            ).filter(similarity__gt=0.1).order_by('-similarity')
+
     return render(request,
                   'courses/course/search.html',
                   {'form': form,
