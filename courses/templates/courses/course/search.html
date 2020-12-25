@@ -4,7 +4,7 @@
 
 {% block content %}
   {% if query %}
-    <h1>Course pages containing "{{ query }}"</h1>
+    <h1>Search results for "{{ query }}"</h1>
     <h3>
       {% with results.count as total_results %}
         Found {{ total_results }} result{{ total_results|pluralize }}
