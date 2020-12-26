@@ -130,6 +130,7 @@ background-color: #ffffff;
 }
 
 .contents {
+    width:100%;
     padding:0px;
     float:left;
     background:#f9f9f9;
