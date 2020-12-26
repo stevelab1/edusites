@@ -304,7 +304,7 @@ label {
 
 input, select, textarea {
     border:1px solid #ccc;
-    border-bottom:3px solid #ccc;
+    border-radius:20px;
     padding:8px 12px;
     font-size:16px;
     font-family:'Roboto', sans-serif;
@@ -322,14 +322,14 @@ select {
 }
 
 input[type=submit], a.button {
-    border-radius:5px;
-    background:#4dcc43;
-    color:#fff;
+    border-radius:25px;
+    background:#ffffff;
+    color:green;
     font-size:16px;
     text-transform:uppercase;
-    border:1px solid;
+    border:2px solid;
     padding:10px 20px;
-    margin:20px 0;
+    margin:0px 0;
 }
 
 a.secondary-button {
@@ -339,7 +339,8 @@ a.secondary-button {
 }
 
 input[type=submit]:hover, a.button:hover {
-    background:#3fad37;
+    background:green;
+    color:white;
 }
 
 ul#course-modules {

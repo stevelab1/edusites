@@ -25,30 +25,21 @@
     {% endif %}</li>
   </ol>
 </nav>
-<div class="container">
-  <div class="card text-center m-2 mb-3 border-0">
-    <div class="card-header border-muted bg-white">
-      <ul class="nav nav-pills">
-<!--        <li class="nav-item">-->
-<!--           <a class="nav-link active"  data-bs-toggle="pill" href="#learn">LEARN</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--           <a class="nav-link" data-bs-toggle="pill" href="#teach">TEACH</a>-->
-<!--        </li>-->
-<!--        <li class="nav-item">-->
-<!--           <a class="nav-link" data-toggle="pill" href="#more" tabindex="-1" aria-disabled="true">MORE</a>-->
-<!--        </li>-->
-      </ul>
-    </div>
-    <div class="tab-content mt-2">
-      <div id="learn" class="tab-pane active">
-        <div class="card-body" style="height: 100px">
+
+
+    <div class="container text-center" style="height: 135px">
           {% if subject %}
+                        <br>        <br>
              <h5 class="card-title"> {{ subject.title }} Courses</h5>
              <p class="card-text"> {{ subject.content}} </p>
+          {% elif category %}
+                        <br>        <br>
+             <h5 class="card-title"> {{ category|title }} Courses</h5>
+<!--             <p class="card-text"> {{ subject.content}} </p>-->
           {% else %}
-<!--             <h5 class="card-title">What do you want to learn?</h5>-->
-<!--             <p class="card-text">Browse Courses</p>-->
+                        <br>        <br>
+             <h5 class="">What do you want to learn?</h5>
+             <p class="">Browse Courses</p>
 <!--                <a href="{% url "search" %}" class="btn btn-outline-success">-->
 <!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">-->
 <!--  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
@@ -58,10 +49,7 @@
             <!--             <p class="card-text">Most loved/in-demand technologies</p>-->
 <!--             <p class="card-text">We've curated the best courses available online into Learning Paths</p>-->
           {% endif %}
-        </div>
-      </div>
-      <div id="teach" class="tab-pane fade">
-        <div class="card-body" style="height: 100px">
+
 
 <!--            <p><a href="{% url "chat:course_chat_room" "11" %}" target="_blank">-->
 <!--      <button type="button" class="btn btn-dark"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">-->
@@ -74,7 +62,6 @@
 <!--        <p class="card-text">Start teaching today</p>-->
 <!--        <a href="{% url "manage_course_list" %}" class="btn btn-primary">Create a course</a>-->
     </div>
-                </div>
 
 <!--          <div id="more" class="tab-pane fade">-->
 <!--    <div class="card-body">-->
@@ -83,9 +70,7 @@
 <!--    <a href="#" class="btn btn-primary">Go somewhere</a>-->
 <!--  </div>-->
 <!--        </div>-->
-        </div>
 
-</div>
 
 <!--  <div class="contents text-white bg-secondary mb-3 rounded-3">-->
 <!--    <h6>SUBJECTS</h6>-->
@@ -104,7 +89,10 @@
 <!--  </div>-->
 
 
-  <div class="contents p-0 mx-3 mb-3 rounded-3">
+<div class="container text-center">
+
+
+<div class="contents p-0 mx-3 mb-3 rounded-3">
 
 <nav class="navbar navbar-expand-lg navbar-light bg-white rounded-3 p-0">
   <div class="container-fluid">
@@ -125,10 +113,6 @@
         </li>
       {% endfor %}
 
-
-<!-- <li><a class="nav-link active" href="/"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-3x3-gap-fill" viewBox="0 1 16 17">-->
-<!--  <path d="M1 2a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V2zM1 7a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1V7zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1V7zM1 12a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H2a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1H7a1 1 0 0 1-1-1v-2zm5 0a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1v2a1 1 0 0 1-1 1h-2a1 1 0 0 1-1-1v-2z"/>-->
-<!--</svg></a></li>-->
           <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
 
 

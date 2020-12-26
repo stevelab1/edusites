@@ -227,10 +227,17 @@ class CourseDetailView(DetailView):
         return context
 
 
-def search(request):
+def search(request, subject=None, category=None):
     form = SearchForm()
     query = None
     results = []
+    subjects = Subject.objects.annotate(
+        total_courses=Count('courses'))
+    courses = Course.objects.annotate(
+        total_modules=Count('modules')) \
+        .order_by('-updated')
+    categories = Category.objects.all()
+
     if 'query' in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
@@ -240,9 +247,22 @@ def search(request):
                 similarity=TrigramSimilarity('title', query),
             ).filter(similarity__gt=0.1).order_by('-similarity')
 
+    if category:
+        category = get_object_or_404(Category, slug=category)
+        courses = courses.filter(categories=category)
+
+    if subject:
+        subject = get_object_or_404(Subject, slug=subject)
+        courses = courses.filter(subject=subject)
+
     return render(request,
                   'courses/course/search.html',
                   {'form': form,
                    'query': query,
-                   'results': results})
+                   'results': results,
+                   'subject': subject,
+                   'subjects': subjects,
+                   'category': category,
+                   'categories': categories,
+                   'courses': courses,})
 

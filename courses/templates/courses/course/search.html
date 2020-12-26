@@ -2,27 +2,134 @@
 
 {% block title %}Search{% endblock %}
 
+
+
+
+
+
+
+
+
+
+
 {% block content %}
-  {% if query %}
-    <h1>Search results for "{{ query }}"</h1>
-    <h3>
-      {% with results.count as total_results %}
-        Found {{ total_results }} result{{ total_results|pluralize }}
-      {% endwith %}
-    </h3>
-    {% for course in results %}
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb p-1 m-2 bg-light rounded">
+    <li class="breadcrumb-item"><a href="/"><svg width="1em" height="1em" viewBox="0 2 17 15.5" class="bi bi-house-door-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+  <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
+  <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
+</svg></a></li>
+<!--    <li class="breadcrumb-item"><a href="{% url "course_list" %}"> Courses</a></li>-->
+    <li class="breadcrumb-item active" aria-current="page">{% if query %}
+      Search results for "{{ query }}"
+    {% else %}
+      Search for courses
+    {% endif %}</li>
+  </ol>
+</nav>
+
+
+    <div class="container text-center" style="height: 135px">
+          {% if query %}
+          {% with results.count as total_results %}
+          <h5 class="">
+                <br>        <br>
+            Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
+          </h5>
+          {% endwith %}
+          <p class="card-text">
+            {% for course in results %}
+            {% empty %}
+            There are no results for your query.
+            <a href="{% url "search" %}"><u>Search again</u></a>
+            {% endfor %}
+          </p>
+          {% else %}
+        <br>
+        <br>
+          <form class="form-inline" style="display: inline-block; border-radius:22px;" method="get">
+            {{ form }}
+              <div class="" style="display: inline-block; border-radius:22px;">
+            <input class="py-2 mx-3 border-1" type="submit" value="Search">
+                  </div>
+          </form>
+          {% endif %}
+
+
+<!--            <p><a href="{% url "chat:course_chat_room" "11" %}" target="_blank">-->
+<!--      <button type="button" class="btn btn-dark"><svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-chat-left-dots-fill" fill="currentColor" xmlns="http://www.w3.org/2000/svg">-->
+<!--  <path fill-rule="evenodd" d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H4.414a1 1 0 0 0-.707.293L.854 15.146A.5.5 0 0 1 0 14.793V2zm5 4a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm4 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm3 1a1 1 0 1 0 0-2 1 1 0 0 0 0 2z"/></svg></button></a></p>-->
+
+<!--                    <h5 class="card-title">Want to create your own courses?</h5>-->
+<!--        <p class="card-text">Contact Stephen for an instructor login at the email address you received</p>-->
+
+<!--        <h5 class="card-title">Want to create your own courses?</h5>-->
+<!--        <p class="card-text">Start teaching today</p>-->
+<!--        <a href="{% url "manage_course_list" %}" class="btn btn-primary">Create a course</a>-->
+    </div>
+
+<div class="container text-center">
+
+
+<div class="contents p-0 mx-3 mb-3 rounded-3">
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white rounded-3 p-0">
+  <div class="container-fluid">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarToggler">
+      <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
+
+          <li class="nav-item rounded-pill" {% if not subject and not category %}class="selected" style="background-color: #e9ecef"{% endif %}>
+        <a class="nav-link active" aria-current="page" href="{% url "course_list" %}">All</a>
+      </li>
+      {% for s in subjects %}
+        <li class="nav-item rounded-pill" {% if subject == s %}class="selected" style="background-color: #e9ecef" {% endif %}>
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_subject" s.slug %}">
+            {{ s.title }}
+          </a>
+        </li>
+      {% endfor %}
+
+          <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
+
+
+{% for c in categories %}
+
+        <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
+
+         {{ c.title }}
+                      </a>
+
+        </li>
+
+      {% endfor %}
+
+
+           <a class="btn btn-outline-light rounded-pill text-dark" href="{% url "search" %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></a>
+</svg>
+
+
+      </ul>
+    </div>
+  </div>
+</nav>
+    </div>
+
+<br><br>
+<br>
+
+
+    <div>
+             {% for course in results %}
      <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>
 {{ course.overview|truncatewords_html:5 }}</a></p>
     {% empty %}
-      <p>There are no results for your query.</p>
     {% endfor %}
 
-<p><a href="{% url "search" %}"><u>Search again</u></a></p>
-  {% else %}
-    <h1>Search for courses</h1>
-    <form method="get">
-      {{ form.as_p }}
-      <input type="submit" value="Search">
-    </form>
-  {% endif %}
+ </div>
+
 {% endblock %}
