@@ -12,4 +12,4 @@ ModuleFormSet = inlineformset_factory(Course,
 
 
 class SearchForm(forms.Form):
-    query = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder': 'What do you want to learn?', 'style': 'width: 18em;'}))
+    query = forms.CharField(label="", widget=forms.TextInput(attrs={'placeholder': 'What do you want to learn?', 'style': 'width: 14em;'}))
