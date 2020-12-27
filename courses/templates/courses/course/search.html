@@ -74,7 +74,7 @@
     <div class="collapse navbar-collapse" id="navbarToggler">
       <ul class="navbar-nav mr-auto mb-2 mb-lg-0">
 
-          <li class="nav-item rounded-pill" {% if not subject and not category %}class="selected" style="background-color: #e9ecef"{% endif %}>
+          <li class="nav-item rounded-pill" {% if not subject and not category and not query%}class="selected" style="background-color: #e9ecef"{% endif %}>
         <a class="nav-link active" aria-current="page" href="{% url "course_list" %}">All</a>
       </li>
       {% for s in subjects %}
@@ -116,7 +116,7 @@
          {% with subject=course.subject %}
          <div class="col-12 col-md-6 col-lg-4">
              <a href="{% url "course_detail" course.slug %}">
-           <div class="card text-dark shadow p-3 mb-4 bg-white rounded">
+           <div class="card text-dark p-3 mb-4 bg-white">
                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
              <div class="card-header bg-white text-center">{{ course.title }}</div>
              <div class="card-body">
@@ -143,10 +143,53 @@
       </div>
       {% endwith %}
     {% endfor %}
+
+
+         {% if not query %}
+         {% for course in courses %}
+         {% with subject=course.subject %}
+         <div class="col-12 col-md-6 col-lg-4">
+             <a href="{% url "course_detail" course.slug %}">
+           <div class="card text-dark p-3 mb-4 bg-white">
+               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
+             <div class="card-header bg-white text-center">{{ course.title }}</div>
+             <div class="card-body">
+<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
+               <h6 class="card-text">{{ course.overview }}</h6>
+               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
+             </div>
+             <div class="card-footer bg-white border-0">
+               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>
+                                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
+
+<!--                                <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}-->
+<!--  {% endfor %}</span>-->
+<!--                 <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}-->
+<!--  {% endfor %}</span>-->
+
+<!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
+<!--{{ course.overview|truncatewords_html:5 }}</a></p>-->
+
+     </div>
+           </div>
+             </a>
+
+      </div>
+      {% endwith %}
+    {% endfor %}
+
+
+{% endif %}
+
   </div>
+
+
+
     </div>
   </div>
 </div>
+
+
 
 
 {% endblock %}

@@ -18,8 +18,11 @@
   <path d="M6.5 10.995V14.5a.5.5 0 0 1-.5.5H2a.5.5 0 0 1-.5-.5v-7a.5.5 0 0 1 .146-.354l6-6a.5.5 0 0 1 .708 0l6 6a.5.5 0 0 1 .146.354v7a.5.5 0 0 1-.5.5h-4a.5.5 0 0 1-.5-.5V11c0-.25-.25-.5-.5-.5H7c-.25 0-.5.25-.5.495z"/>
   <path fill-rule="evenodd" d="M13 2.5V6l-2-2V2.5a.5.5 0 0 1 .5-.5h1a.5.5 0 0 1 .5.5z"/>
 </svg></a></li>
-    <li class="breadcrumb-item active" aria-current="page">{% if subject %}
+    <li class="breadcrumb-item active" aria-current="page">
+        {% if subject %}
       {{ subject.title }} Courses
+        {% elif category %}
+              {{ category.title|title }} Courses
     {% else %}
       All Courses
     {% endif %}</li>
@@ -37,9 +40,16 @@
              <h5 class="card-title"> {{ category|title }} Courses</h5>
 <!--             <p class="card-text"> {{ subject.content}} </p>-->
           {% else %}
-                        <br>        <br>
-             <h5 class="">What do you want to learn?</h5>
-             <p class="">Browse Courses</p>
+                        <br>
+        <br>
+          <form class="form-inline" action="{% url "search" %}" method="get" target="" onsubmit='submitSearch()' style="display: inline-block; border-radius:22px;">
+            <tr><th></th><td><input type="text" name="query" placeholder="What do you want to learn?" style="width: 14em;" required id="id_query"></td></tr>
+              <div class="" style="display: inline-block; border-radius:22px;">
+            <button class="py-2 mx-2 border-1 btn btn-light rounded-circle text-dark" type="submit" value="Search"><svg xmlns="http://www.w3.org/2000/svg" width="17" height="17" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button>
+
+                  </div>
+          </form>
 <!--                <a href="{% url "search" %}" class="btn btn-outline-success">-->
 <!--                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">-->
 <!--  <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>-->
@@ -144,7 +154,7 @@
         {% with subject=course.subject %}
          <div class="col-12 col-md-6 col-lg-4">
              <a href="{% url "course_detail" course.slug %}">
-           <div class="card text-dark shadow p-3 mb-4 bg-white rounded">
+           <div class="card text-dark p-3 mb-4 bg-white">
                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
              <div class="card-header bg-white text-center">{{ course.title }}</div>
              <div class="card-body">
@@ -201,3 +211,20 @@
 <!--    </div>-->
 
 {% endblock %}
+
+<!--   {% block domready %}-->
+
+<!-- // executes when HTML-Document is loaded and DOM is ready-->
+<!--console.log("document is ready");-->
+
+
+<!--  $( ".card" ).hover(-->
+<!--  function() {-->
+<!--    $(this).addClass('shadow').css('cursor', 'pointer');-->
+<!--  }, function() {-->
+<!--    $(this).removeClass('shadow');-->
+<!--  }-->
+<!--);-->
+
+<!--// document ready-->
+<!--      {% endblock %}-->

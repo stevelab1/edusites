@@ -234,6 +234,7 @@ def search(request, subject=None, category=None):
     subjects = Subject.objects.annotate(
         total_courses=Count('courses'))
     categories = Category.objects.all()
+    courses = Course.objects.all()
 
     if 'query' in request.GET:
         form = SearchForm(request.GET)
@@ -256,6 +257,7 @@ def search(request, subject=None, category=None):
                    'query': query,
                    'results': results,
                    'subject': subject,
+                   'courses': courses,
                    'subjects': subjects,
                    'category': category,
                    'categories': categories})
