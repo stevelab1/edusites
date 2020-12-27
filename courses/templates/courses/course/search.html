@@ -3,15 +3,6 @@
 {% block title %}Search{% endblock %}
 
 
-
-
-
-
-
-
-
-
-
 {% block content %}
 <nav aria-label="breadcrumb">
   <ol class="breadcrumb p-1 m-2 bg-light rounded">
@@ -108,38 +99,54 @@
         </li>
 
       {% endfor %}
-
-          {% if query %}
-
-
            <a class="btn btn-outline-light rounded-pill text-dark" href="{% url "search" %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></a>
 </svg>
-
-          {% else %}
-
-
-          {% endif %}
-
-
-
       </ul>
     </div>
   </div>
 </nav>
     </div>
-
 <br><br>
 <br>
-
-
-    <div>
+    <div class="">
+    <div class="container">
+     <div class="row" data-masonry='{"percentPosition": true }'>
              {% for course in results %}
-     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>
-{{ course.overview|truncatewords_html:5 }}</a></p>
-    {% empty %}
-    {% endfor %}
+         {% with subject=course.subject %}
+         <div class="col-12 col-md-6 col-lg-4">
+             <a href="{% url "course_detail" course.slug %}">
+           <div class="card text-dark shadow p-3 mb-4 bg-white rounded">
+               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
+             <div class="card-header bg-white text-center">{{ course.title }}</div>
+             <div class="card-body">
+<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
+               <h6 class="card-text">{{ course.overview }}</h6>
+               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
+             </div>
+             <div class="card-footer bg-white border-0">
+               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>
+                                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
 
- </div>
+                                <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}
+  {% endfor %}</span>
+                 <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
+  {% endfor %}</span>
+
+<!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
+<!--{{ course.overview|truncatewords_html:5 }}</a></p>-->
+
+     </div>
+           </div>
+             </a>
+
+      </div>
+      {% endwith %}
+    {% endfor %}
+  </div>
+    </div>
+  </div>
+</div>
+
 
 {% endblock %}

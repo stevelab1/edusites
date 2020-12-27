@@ -233,9 +233,6 @@ def search(request, subject=None, category=None):
     results = []
     subjects = Subject.objects.annotate(
         total_courses=Count('courses'))
-    courses = Course.objects.annotate(
-        total_modules=Count('modules')) \
-        .order_by('-updated')
     categories = Category.objects.all()
 
     if 'query' in request.GET:
@@ -249,11 +246,9 @@ def search(request, subject=None, category=None):
 
     if category:
         category = get_object_or_404(Category, slug=category)
-        courses = courses.filter(categories=category)
 
     if subject:
         subject = get_object_or_404(Subject, slug=subject)
-        courses = courses.filter(subject=subject)
 
     return render(request,
                   'courses/course/search.html',
@@ -263,6 +258,5 @@ def search(request, subject=None, category=None):
                    'subject': subject,
                    'subjects': subjects,
                    'category': category,
-                   'categories': categories,
-                   'courses': courses,})
+                   'categories': categories})
 
