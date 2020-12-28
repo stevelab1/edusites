@@ -45,6 +45,7 @@ INSTALLED_APPS = [
     'cloudinary',
     'django.contrib.staticfiles',
     'django.contrib.postgres',
+    'taggit',
     'social_django',
     'moodboard.apps.MoodboardConfig',
     'ckeditor',

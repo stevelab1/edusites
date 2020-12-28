@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.contrib.contenttypes.models import ContentType
 from django.contrib.contenttypes.fields import GenericForeignKey
+from taggit.managers import TaggableManager
 from django.template.loader import render_to_string
 from .fields import OrderField
 from ckeditor.fields import RichTextField
@@ -41,6 +42,7 @@ class Course(models.Model):
                                 on_delete=models.CASCADE)
     categories = models.ManyToManyField(Category,
                                 related_name='courses')
+    tags = TaggableManager()
     title = models.CharField(max_length=200)
     slug = models.SlugField(max_length=200, unique=True)
     overview = models.TextField()
