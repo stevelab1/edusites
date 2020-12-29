@@ -158,15 +158,18 @@ position-relative top-100 start-100 translate-middle-y
                 {% with subject=course.subject %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card text-dark p-3 mb-4 bg-white">
-                        <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top" onerror="this.style.display='none'">
-                        <a href="{% url "course_detail" course.slug %}"><div class="card-header bg-white text-center">{{ course.title }}</div>
+                        <a href="{% url "course_detail" course.slug %}"><img src="https://cdn.pixabay.com/photo/2015/07/09/22/45/tree-838667__180.jpg" class="card-img-top rounded-3" onerror="this.style.display='none'">
+                        <div class="card-header bg-white text-center">{{ course.title }}</div>
                         <div class="card-body">
                             <h6 class="card-text">{{ course.overview }}</h6>
                             <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
                         </div>
                         <div class="card-footer bg-white border-0">
                             <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} modules</span></a>
-                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"> {{ subject }}</span></a>
+                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
+
+                            {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag|title }}</span></a>
+  {% endfor %}
                         </div>
                     </div>
                 </div>

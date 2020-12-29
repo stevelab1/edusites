@@ -1,23 +1,22 @@
 from django.urls import reverse_lazy
-from django.shortcuts import redirect, get_object_or_404
+from django.shortcuts import render, redirect, get_object_or_404
 from django.views.generic.base import TemplateResponseMixin, View
 from django.views.generic.list import ListView
 from django.views.generic.edit import CreateView, UpdateView, \
     DeleteView
 from django.views.generic.detail import DetailView
 from django.contrib.auth.mixins import LoginRequiredMixin, \
-                                       PermissionRequiredMixin
+    PermissionRequiredMixin
 from django.forms.models import modelform_factory
 from django.apps import apps
 from django.db.models import Count
-
+from taggit.models import Tag
 from braces.views import CsrfExemptMixin, JsonRequestResponseMixin
 from students.forms import CourseEnrollForm
 from .models import Course, Module, Content, Subject, Category
 from .forms import ModuleFormSet
-from django.contrib.postgres.search import TrigramSimilarity
+from django.contrib.postgres.search import TrigramSimilarity, SearchVector, SearchQuery, SearchRank
 from .forms import SearchForm
-from django.shortcuts import render
 
 
 class OwnerMixin(object):
@@ -38,7 +37,6 @@ class OwnerCourseMixin(OwnerMixin,
     model = Course
     fields = ['subject', 'title', 'categories', 'slug', 'overview', 'file']
     success_url = reverse_lazy('manage_course_list')
-
 
 
 class OwnerCourseEditMixin(OwnerCourseMixin, OwnerEditMixin):
@@ -91,7 +89,6 @@ class CourseModuleUpdateView(TemplateResponseMixin, View):
                                         'formset': formset})
 
 
-
 class ContentCreateUpdateView(TemplateResponseMixin, View):
     module = None
     model = None
@@ -113,8 +110,8 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
 
     def dispatch(self, request, module_id, model_name, id=None):
         self.module = get_object_or_404(Module,
-                                       id=module_id,
-                                       course__owner=request.user)
+                                        id=module_id,
+                                        course__owner=request.user)
         self.model = self.get_model(model_name)
         if id:
             self.obj = get_object_or_404(self.model,
@@ -148,8 +145,8 @@ class ContentCreateUpdateView(TemplateResponseMixin, View):
 class ContentDeleteView(View):
     def post(self, request, id):
         content = get_object_or_404(Content,
-                               id=id,
-                               module__course__owner=request.user)
+                                    id=id,
+                                    module__course__owner=request.user)
         module = content.module
         content.item.delete()
         content.delete()
@@ -173,7 +170,7 @@ class ModuleOrderView(CsrfExemptMixin,
     def post(self, request):
         for id, order in self.request_json.items():
             Module.objects.filter(id=id,
-                   course__owner=request.user).update(order=order)
+                                  course__owner=request.user).update(order=order)
         return self.render_json_response({'saved': 'OK'})
 
 
@@ -183,8 +180,8 @@ class ContentOrderView(CsrfExemptMixin,
     def post(self, request):
         for id, order in self.request_json.items():
             Content.objects.filter(id=id,
-                       module__course__owner=request.user) \
-                       .update(order=order)
+                                   module__course__owner=request.user) \
+                .update(order=order)
         return self.render_json_response({'saved': 'OK'})
 
 
@@ -192,14 +189,17 @@ class CourseListView(TemplateResponseMixin, View):
     model = Course
     template_name = 'courses/course/list.html'
 
-    def get(self, request, subject=None, category=None):
+    def get(self, request, subject=None, category=None, tag=None):
         subjects = Subject.objects.annotate(
-                       total_courses=Count('courses'))
+            total_courses=Count('courses'))
         courses = Course.objects.annotate(
-                       total_modules=Count('modules')) \
+            total_modules=Count('modules')) \
             .order_by('-updated')
         categories = Category.objects.all()
-        # cats = Category.objects.all()
+
+        if tag:
+            tag = get_object_or_404(Tag, slug=tag)
+            courses = courses.filter(tags__in=[tag])
 
         if category:
             category = get_object_or_404(Category, slug=category)
@@ -208,11 +208,12 @@ class CourseListView(TemplateResponseMixin, View):
         if subject:
             subject = get_object_or_404(Subject, slug=subject)
             courses = courses.filter(subject=subject)
+
         return self.render_to_response({'subjects': subjects,
                                         'subject': subject,
                                         'category': category,
                                         'categories': categories,
-                                        # 'cats': cats,
+                                        'tag': tag,
                                         'courses': courses})
 
 
@@ -223,7 +224,7 @@ class CourseDetailView(DetailView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['enroll_form'] = CourseEnrollForm(
-                                   initial={'course':self.object})
+            initial={'course': self.object})
         return context
 
 
@@ -231,6 +232,7 @@ def search(request, subject=None, category=None):
     form = SearchForm()
     query = None
     results = []
+    results_b = []
     subjects = Subject.objects.annotate(
         total_courses=Count('courses'))
     categories = Category.objects.all()
@@ -241,9 +243,16 @@ def search(request, subject=None, category=None):
         if form.is_valid():
             query = form.cleaned_data['query']
             results = Course.objects.annotate(
-
                 similarity=TrigramSimilarity('title', query),
             ).filter(similarity__gt=0.1).order_by('-similarity')
+
+            query = form.cleaned_data['query']
+            search_vector = SearchVector('overview')
+            search_query = SearchQuery(query)
+            results_b = Course.objects.annotate(
+                search=search_vector,
+                rank=SearchRank(search_vector, search_query)
+            ).filter(search=search_query).order_by('-rank')
 
     if category:
         category = get_object_or_404(Category, slug=category)
@@ -256,9 +265,9 @@ def search(request, subject=None, category=None):
                   {'form': form,
                    'query': query,
                    'results': results,
+                   'results_b': results_b,
                    'subject': subject,
                    'courses': courses,
                    'subjects': subjects,
                    'category': category,
                    'categories': categories})
-

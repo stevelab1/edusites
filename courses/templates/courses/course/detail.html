@@ -29,8 +29,13 @@
        <p class="text-muted">
         {{ object.modules.count }} modules <br>
         Instructor: {{ object.owner.get_full_name }}<br>
-        Subject: {{ subject.title }}</a>
+        Subject: {{ subject.title }}
       </p>
+
+<p class="tags">Tags: {{ course.tags.all|join:", " }}</p>
+
+
+
 {% if request.user.is_authenticated %}
   <form action="{% url "student_enroll_course" %}" method="post">
     {{ enroll_form }}

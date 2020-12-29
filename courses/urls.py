@@ -56,6 +56,10 @@ urlpatterns = [
          views.CourseListView.as_view(),
          name='course_list_category'),
 
+    path('tag/<slug:tag>/',
+         views.CourseListView.as_view(),
+         name='course_list_tag'),
+
     path('<slug:slug>/',
          views.CourseDetailView.as_view(),
          name='course_detail'),
