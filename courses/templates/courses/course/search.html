@@ -1,5 +1,7 @@
 {% extends "base.html" %}
 
+{% load mathfilters %}
+
 {% block title %}Search{% endblock %}
 
 
@@ -19,23 +21,63 @@
   </ol>
 </nav>
 
-
-    <div class="container text-center" style="height: 135px">
           {% if query %}
-          {% with results.count as total_results %}
-          <h5 class="">
+    <div class="container text-center text-truncate" style="height: 135px">
+          {% with results.count|add:results_b.count as total_results %}
+                    {% for course in results %}
+                                {% if course in results and results_b %}
+        {% with total_results|sub:1 as total_results_b %}
+        <h5 class="">
+                <br>        <br>
+           Found {{ total_results_b }} result{{ total_results_b|pluralize }} for "{{ query }}"
+          </h5>
+<br>
+        {% endwith %}
+                                        {% endif %}
+                                                {% endfor %}
+                  {% endwith %}
+
+                                {% endif %}
+
+ {% if query %}
+          {% with results.count|add:results_b.count as total_results %}
+                            {% if course in results %}
+
+                                        {% if course not in results_b %}
+         <h5 class="">
                 <br>        <br>
             Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
           </h5>
+
+                                {% endif %}
+
+                    {% else %}
+
+
+   <h5 class="">
+                <br>        <br>
+           Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
+                   <h6><a href="{% url "search" %}"><u>Try again?</u></a></h6>
+
+          </h5>
+
+                    {% endif %}
+
           {% endwith %}
-          <p class="card-text">
-            {% for course in results %}
-            {% empty %}
-            There are no results for your query.
-            <a href="{% url "search" %}"><u>Search again</u></a>
-            {% endfor %}
-          </p>
+
+<!--          <p class="card-text">-->
+<!--            {% for course in results %}-->
+<!--            {% empty %}-->
+<!--            There are no results for your query.-->
+<!--            <a href="{% url "search" %}"><u>Search again</u></a>-->
+<!--            {% endfor %}-->
+<!--          </p>-->
           {% else %}
+        </div>
+
+
+    <div class="container text-center mt-0" style="height: 135px">
+
         <br>
         <br>
           <form class="form-inline" style="display: inline-block; border-radius:22px;" method="get">
@@ -113,48 +155,50 @@ position-relative top-100 start-100 translate-middle-y
 <br><br>
 <br>
     <div class="">
-    <div class="container">
-     <div class="row" data-masonry='{"percentPosition": true }'>
-             {% for course in results %}
-         {% with subject=course.subject %}
-         <div class="col-12 col-md-6 col-lg-4">
-             <a href="{% url "course_detail" course.slug %}">
-           <div class="card text-dark p-3 mb-4 bg-white">
-               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
-             <div class="card-header bg-white text-center">{{ course.title }}</div>
-             <div class="card-body">
-<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
-               <h6 class="card-text">{{ course.overview }}</h6>
-               <p class="card-text"><small class="text-muted">Instructor: Trigram{{ course.owner.get_full_name }}</small></p>
-             </div>
-             <div class="card-footer bg-white border-0">
-               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>
-                                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
+        <div class="container">
+            <div class="row" data-masonry='{"percentPosition": true }'>
+                {% for course in results %}
+                {% with subject=course.subject %}
+                <div class="col-12 col-md-6 col-lg-4">
 
-                                <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}
+                    <a href="{% url "course_detail" course.slug %}">
+                    <div class="card text-dark p-3 mb-4 bg-white">
+                        <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
+                        <div class="card-header bg-white text-center">{{ course.title }}</div>
+                        <div class="card-body">
+<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
+                            <h6 class="card-text">{{ course.overview }}</h6>
+                            <p class="card-text"><small class="text-muted">Instructor: Trigram{{ course.owner.get_full_name }}</small></p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>
+                            <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
+                            <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}
   {% endfor %}</span>
-                 <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
+                            <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
   {% endfor %}</span>
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
 <!--{{ course.overview|truncatewords_html:5 }}</a></p>-->
+                        </div>
+                    </div>
+                    </a>
+                </div>
+                {% endwith %}
+                {% endfor %}
+<!--            </div>-->
+<!--        </div>-->
 
-     </div>
-           </div>
-             </a>
-
-      </div>
-      {% endwith %}
-    {% endfor %}
+<!--                    <div class="">-->
+<!--    <div class="container">-->
+<!--     <div class="row" data-masonry='{"percentPosition": true }'>-->
+                                  <div class="col-12 col-md-6 col-lg-4">
 
 
-             <div class="">
-    <div class="container">
-     <div class="row" data-masonry='{"percentPosition": true }'>
              {% for course in results_b %}
          {% with subject=course.subject %}
          {% if course not in results %}
-         <div class="col-12 col-md-6 col-lg-4">
+
              <a href="{% url "course_detail" course.slug %}">
            <div class="card text-dark p-3 mb-4 bg-white">
                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
@@ -184,53 +228,44 @@ position-relative top-100 start-100 translate-middle-y
          {% endif %}
       {% endwith %}
     {% endfor %}
+     </div>
+
+</div>
+        </div>
+            </div>
 
 
          {% if not query %}
-         {% for course in courses %}
-         {% with subject=course.subject %}
-         <div class="col-12 col-md-6 col-lg-4">
-             <a href="{% url "course_detail" course.slug %}">
-           <div class="card text-dark p-3 mb-4 bg-white">
-               <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top"  onerror="this.style.display='none'">
-             <div class="card-header bg-white text-center">{{ course.title }}</div>
-             <div class="card-body">
-<!--               <h5 class="card-title">{{ course.overview }}</h5>-->
-               <h6 class="card-text">{{ course.overview }}</h6>
-               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
-             </div>
-             <div class="card-footer bg-white border-0">
-               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>
-                                <span class="badge rounded-pill bg-secondary"> {{ subject }} </span>
 
-<!--                                <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}-->
-<!--  {% endfor %}</span>-->
-<!--                 <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}-->
-<!--  {% endfor %}</span>-->
+          <div class="">
+        <div class="container">
+            <div class="row" data-masonry='{"percentPosition": true }'>
+                {% for course in courses %}
+                {% with subject=course.subject %}
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="card text-dark p-3 mb-4 bg-white">
+                        <a href="{% url "course_detail" course.slug %}"><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-3" onerror="this.style.display='none'">
+                        <div class="card-header bg-white text-center">{{ course.title }}</div>
+                        <div class="card-body">
+                            <h6 class="card-text">{{ course.overview }}</h6>
+                            <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>
+                        </div>
+                        <div class="card-footer bg-white border-0">
+                            <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} modules</span></a>
+                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
 
-<!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
-<!--{{ course.overview|truncatewords_html:5 }}</a></p>-->
-
-     </div>
-           </div>
-             </a>
-
-      </div>
-      {% endwith %}
-    {% endfor %}
-
-
-{% endif %}
-
-  </div>
-
-
-
+                            {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag.name }}</span></a>
+  {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endwith %}
+                {% endfor %}
+            </div>
+        </div>
     </div>
-  </div>
 </div>
-
-
+  {% endif %}
 
 
 {% endblock %}

@@ -49,6 +49,7 @@ INSTALLED_APPS = [
     'social_django',
     'moodboard.apps.MoodboardConfig',
     'ckeditor',
+    'mathfilters',
     'sorl.thumbnail',
     'actions.apps.ActionsConfig',
     'students.apps.StudentsConfig',

@@ -234,10 +234,14 @@ def search(request, subject=None, category=None):
     query = None
     results = []
     results_b = []
+    results_c = [results + results_b]
     subjects = Subject.objects.annotate(
         total_courses=Count('courses'))
     categories = Category.objects.all()
-    courses = Course.objects.all()
+    # courses = Course.objects.all()
+    courses = Course.objects.annotate(
+        total_modules=Count('modules')) \
+        .order_by('-updated')
 
     if 'query' in request.GET:
         form = SearchForm(request.GET)
@@ -267,6 +271,7 @@ def search(request, subject=None, category=None):
                    'query': query,
                    'results': results,
                    'results_b': results_b,
+                   'results_c': results_c,
                    'subject': subject,
                    'courses': courses,
                    'subjects': subjects,
