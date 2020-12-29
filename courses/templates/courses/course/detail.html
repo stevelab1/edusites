@@ -16,14 +16,17 @@
   </ol>
 </nav>
 
-<div class="col mx-3">
+<div class=" mx-3">
      <h1>
         {{ object.title|upper }}
      </h1>
+        <div class="row">
+
+    <div class="col-12 mt-4 mb-5">
 
   {% with subject=object.subject %}
-    <div class="module">
-      <br><h2>Overview</h2>
+    <div class="card p-5">
+      <h2>Overview</h2>
 
       {{ object.overview|linebreaks }}
        <p class="text-muted">
@@ -32,10 +35,16 @@
         Subject: {{ subject.title }}
       </p>
 
-<p class="tags">Tags: {{ course.tags.all|join:", " }}</p>
-
-
-
+        <p class="tags">
+          Tags:
+          {% for tag in course.tags.all %}
+            <a href="{% url "course_list_tag" tag.slug %}">
+              {{ tag.name }}
+            </a>
+            {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+        </p>
+<p></p>
 {% if request.user.is_authenticated %}
   <form action="{% url "student_enroll_course" %}" method="post">
     {{ enroll_form }}
@@ -43,12 +52,30 @@
     <input type="submit" value="Enrol now">
   </form>
 {% else %}
-  <a href="{% url "student_registration" %}" class="button">
+        <p></p>
+
+  <p><a href="{% url "student_registration" %}" class="button p-3">
     Register to enrol
-  </a>
+  </a></p>
 {% endif %}
-    </div>
+  {% endwith %}
+
+  </div>
   </div>
 
-  {% endwith %}
+            <div class="mx-2">
+<p><h3>Other courses you might like:</h3></p>
+{% for course in related_items %}
+  <p>
+      <a href="{% url "course_detail" course.slug %}"><u>{{ course.title }}</u></a>
+  </p>
+{% empty %}
+  There are no similar courses yet.
+{% endfor %}
+
+    </div>  </div>
+
+  </div>
+
+
 {% endblock %}

@@ -23,6 +23,8 @@
         {{ subject.title }} Courses
         {% elif category %}
         {{ category.title|title }} Courses
+        {% elif tag %}
+        {{ tag|title }} Courses
     {% else %}
       All Courses
     {% endif %}</li>
@@ -39,6 +41,9 @@
                         <br>        <br>
              <h5 class="card-title"> {{ category|title }} Courses</h5>
 <!--             <p class="card-text"> {{ subject.content}} </p>-->
+          {% elif tag %}
+        <br>        <br>
+        <h5 class="card-title"> {{ tag|title }} Courses</h5>
           {% else %}
                         <br>
         <br>
@@ -158,7 +163,7 @@ position-relative top-100 start-100 translate-middle-y
                 {% with subject=course.subject %}
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card text-dark p-3 mb-4 bg-white">
-                        <a href="{% url "course_detail" course.slug %}"><img src="https://cdn.pixabay.com/photo/2015/07/09/22/45/tree-838667__180.jpg" class="card-img-top rounded-3" onerror="this.style.display='none'">
+                        <a href="{% url "course_detail" course.slug %}"><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-3" onerror="this.style.display='none'">
                         <div class="card-header bg-white text-center">{{ course.title }}</div>
                         <div class="card-body">
                             <h6 class="card-text">{{ course.overview }}</h6>

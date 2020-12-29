@@ -223,6 +223,7 @@ class CourseDetailView(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
+        context["related_items"] = self.object.tags.similar_objects()[:4]
         context['enroll_form'] = CourseEnrollForm(
             initial={'course': self.object})
         return context
