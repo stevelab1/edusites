@@ -28,7 +28,7 @@
                                 {% if course in results and results_b %}
         {% with total_results|sub:1 as total_results_b %}
         <h5 class="">
-                <br>        <br>
+                <br>
            Found {{ total_results_b }} result{{ total_results_b|pluralize }} for "{{ query }}"
           </h5>
 <br>
@@ -55,7 +55,7 @@
 
 
    <h5 class="">
-                <br>        <br>
+                <br>
            Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
                    <h6><a href="{% url "search" %}"><u>Try again?</u></a></h6>
 
@@ -79,7 +79,7 @@
     <div class="container text-center mt-0" style="height: 135px">
 
         <br>
-        <br>
+
           <form class="form-inline" style="display: inline-block; border-radius:22px;" method="get">
             {{ form }}
               <div class="" style="display: inline-block; border-radius:22px;">
