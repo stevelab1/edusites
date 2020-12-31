@@ -1,7 +1,9 @@
 @import url(//fonts.googleapis.com/css?family=Comfortaa:500);
+@import url(//fonts.googleapis.com/css?family=Roboto:500,300,400);
 
 body {
     margin:0;
+    font-family:'Roboto', sans-serif;
     font-weight:400;
     color:#333;
 }
@@ -21,10 +23,12 @@ ul {
 }
 
 h1, h2, h3, h4, h5 {
+    font-family:'Comfortaa', sans-serif;
     font-weight:400;
 }
 
 h6 {
+    font-family:'Roboto', sans-serif;
     font-weight:400;
     font-size:15px;
 }

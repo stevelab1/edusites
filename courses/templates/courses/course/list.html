@@ -107,7 +107,7 @@ position-relative top-100 start-100 translate-middle-y
 <!--  </div>-->
 
 
-<div class="container text-center">
+<div class="container">
 
 
 <div class="contents p-0 mx-3 mb-3 rounded-3">
@@ -162,11 +162,11 @@ position-relative top-100 start-100 translate-middle-y
                 {% for course in courses %}
                 {% with subject=course.subject %}
                 <div class="col-12 col-md-6 col-lg-4">
-                    <div class="card text-dark p-2 mb-4 bg-white">
+                    <div class="card p-2 mb-4 bg-white">
                         <a href="{% url "course_detail" course.slug %}"><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px" onerror="this.style.display='none'">
-                        <h4 class="card-header bg-white text-center">{{ course.title }}</h4>
                         <div class="card-body">
-                            <h6 class="card-text">{{ course.overview }}</h6>
+                                                    <h4 class="card-title bg-white">{{ course.title }}</h4>
+                            <p class="card-text">{{ course.overview }}</p>
 <!--                            <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
                         <div class="card-footer bg-white border-0">
