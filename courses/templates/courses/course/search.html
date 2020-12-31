@@ -174,14 +174,11 @@ position-relative top-100 start-100 translate-middle-y
 <!--                            <p class="card-
 text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
-                        <div class="card-footer bg-white border-0">
-                             <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} module{{ course.modules.all.count|pluralize }}</span></a>
-                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
+                        <div class="card-footer bg-white border-0 text-center">
+                             <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+<!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-<!--                                {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag.name }}</span></a>-->
-<!--  {% endfor %}-->
-
-                                                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span  class="badge rounded-pill bg-secondary">{{ category }}</span></a>
+                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
@@ -214,14 +211,11 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                <h6 class="card-text">{{ course.overview }}</h6>
 <!--               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
              </div>
-             <div class="card-footer bg-white border-0">
-               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} module{{ course.modules.all.count|pluralize }}</span></a>
-                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
+             <div class="card-footer bg-white border-0 text-center">
+               <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+<!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-<!--                                {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag.name }}</span></a>-->
-<!--  {% endfor %}-->
-
-                                                 {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span  class="badge rounded-pill bg-secondary">{{ category }}</span></a>
+                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
@@ -243,6 +237,8 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
 
          {% if not query %}
 
+
+
           <div class="">
         <div class="container">
             <div class="row" data-masonry='{"percentPosition": true }'>
@@ -256,11 +252,11 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                             <h6 class="card-text">{{ course.overview }}</h6>
 <!--                            <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
-                        <div class="card-footer bg-white border-0">
-                            <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} module{{ course.total_modules|pluralize }}</span></a>
-                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
+                        <div class="card-footer bg-white border-0 text-center">
+                            <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+<!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span  class="badge rounded-pill bg-secondary">{{ category }}</span></a>
+                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
                         </div>
                     </div>
