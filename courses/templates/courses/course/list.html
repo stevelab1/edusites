@@ -164,7 +164,7 @@ position-relative top-100 start-100 translate-middle-y
                 <div class="col-12 col-md-6 col-lg-4">
                     <div class="card text-dark p-2 mb-4 bg-white">
                         <a href="{% url "course_detail" course.slug %}"><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px" onerror="this.style.display='none'">
-                        <h4 class="card-header bg-white text-center">{{ course.title }}</h4>
+                        <div class="card-header bg-white text-center"><strong>{{ course.title }}</strong></div>
                         <div class="card-body">
                             <h6 class="card-text">{{ course.overview }}</h6>
 <!--                            <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
