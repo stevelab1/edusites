@@ -170,10 +170,10 @@ position-relative top-100 start-100 translate-middle-y
 <!--                            <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
                         <div class="card-footer bg-white border-0">
-                            <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} module{{ course.total_modules|pluralize }}</span></a>
-                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
+                            <span class="badge rounded-pill bg-secondary"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"><small>{{ subject }}</small></span></a>
 
-                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span  class="badge rounded-pill bg-secondary">{{ category }}</span></a>
+                            {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
                         </div>
                     </div>
