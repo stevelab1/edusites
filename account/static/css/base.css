@@ -5,6 +5,7 @@ body {
     margin:0;
     font-family:'Roboto', sans-serif;
     font-weight:400;
+    font-size:17px;
     color:#333;
 }
 
@@ -22,15 +23,9 @@ ul {
     float:left;
 }
 
-h1, h2, h3, h4, h5 {
+h1, h2, h3, h4, h5, h6 {
     font-family:'Comfortaa', sans-serif;
     font-weight:400;
-}
-
-h6 {
-    font-family:'Roboto', sans-serif;
-    font-weight:400;
-    font-size:15px;
 }
 
 h1 {
