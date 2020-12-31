@@ -176,7 +176,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                         </div>
                         <div class="card-footer bg-white border-0">
                              <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} module{{ course.modules.all.count|pluralize }}</span></a>
-<!--                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>-->
+                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
 
 <!--                                {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag.name }}</span></a>-->
 <!--  {% endfor %}-->
@@ -216,7 +216,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
              </div>
              <div class="card-footer bg-white border-0">
                <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} module{{ course.modules.all.count|pluralize }}</span></a>
-<!--                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>-->
+                                <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
 
 <!--                                {% for tag in course.tags.all %} <a href="{% url "course_list_tag" tag.slug %}"><span  class="badge rounded-pill bg-danger">{{ tag.name }}</span></a>-->
 <!--  {% endfor %}-->
@@ -258,7 +258,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                         </div>
                         <div class="card-footer bg-white border-0">
                             <span  class="badge rounded-pill bg-secondary">{{ course.total_modules }} module{{ course.total_modules|pluralize }}</span></a>
-<!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>-->
+                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-success"> {{ subject }}</span></a>
 
                             {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span  class="badge rounded-pill bg-secondary">{{ category }}</span></a>
   {% endfor %}
