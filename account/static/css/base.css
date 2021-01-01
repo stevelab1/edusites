@@ -140,10 +140,10 @@ background-color: #ffffff;
 
 
 .contents {
-    width:93%;
+    width:100%;
     padding:0px;
     float:left;
-    background:#f9f9f9;
+    background:#f8f9fa;
     color: #373232;
     font-family:'Roboto', sans-serif;
 }
