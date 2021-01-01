@@ -246,10 +246,6 @@ def search(request, subject=None, category=None):
     if 'query' in request.GET:
         form = SearchForm(request.GET)
         if form.is_valid():
-            query = form.cleaned_data['query']
-            results = Course.objects.annotate(
-                similarity=TrigramSimilarity('title', query),
-            ).filter(similarity__gt=0.1).order_by('-similarity')
 
             query = form.cleaned_data['query']
             search_vector = SearchVector('overview')
@@ -258,6 +254,12 @@ def search(request, subject=None, category=None):
                 search=search_vector,
                 rank=SearchRank(search_vector, search_query)
             ).filter(search=search_query).order_by('-rank')
+
+            query = form.cleaned_data['query']
+            results = Course.objects.annotate(
+                similarity=TrigramSimilarity('title', query),
+            ).filter(similarity__gt=0.1).order_by('-similarity')
+
 
     if category:
         category = get_object_or_404(Category, slug=category)
