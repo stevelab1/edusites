@@ -134,9 +134,8 @@ position-relative top-100 start-100 translate-middle-y
 
           <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
 
-          {% for i in "123" %}
 
-{% for c in categories %}
+{% for categories in "123" %}
 
         <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
           <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
@@ -147,7 +146,6 @@ position-relative top-100 start-100 translate-middle-y
         </li>
       {% endfor %}
 
-      {% endfor %}
 
           <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
