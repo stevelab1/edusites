@@ -37,7 +37,7 @@
         {% empty %}
             <br>
             <h5 class="">
-                There are no exact matches for "{{ query }}"
+                {{ total_results }} exact matches for "{{ query }}". {{ results_b.count }} near matches
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
             <br>
