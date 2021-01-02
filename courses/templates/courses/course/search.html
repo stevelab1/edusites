@@ -27,7 +27,7 @@
     <div class="container text-center text-truncate" style="height: 120px">
         {% with results.count as total_results %}
         {% for course in results %}
-            <h5 class="">
+            <h5 class="text-wrap">
                 <br>
                 <br>
                 Found {{ total_results }} match{{ total_results|pluralize:"es" }} for "{{ query }}"
@@ -36,7 +36,7 @@
             <br>
         {% empty %}
             <br>
-            <h5 class="">
+            <h5 class="text-wrap">
                Found {{ total_results }} exact matches for "{{ query }}", and {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
