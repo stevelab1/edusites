@@ -37,7 +37,7 @@
         {% empty %}
             <br>
             <h5 class="">
-                {{ total_results }} exact matches for "{{ query }}"... Found {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
+               Found {{ total_results }} exact matches for "{{ query }}", and {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
             <br>
