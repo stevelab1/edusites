@@ -24,12 +24,12 @@
 
 
 {% if query %}
-    <div class="container text-center" style="height: 120px">
+    <div class="container text-center text-truncate" style="height: 120px">
         {% with results.count as total_results %}
         {% for course in results %}
             <h5 class="">
                 <br>
-                Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
+                Found {{ total_results }} match{{ total_results|pluralize }} for "{{ query }}"
             </h5>
             <br>
             <br>
@@ -119,6 +119,10 @@ position-relative top-100 start-100 translate-middle-y
     </div>
 <br><br>
 <br>
+
+
+    {% if query %}
+
     <div class="">
         <div class="container">
             <div class="row" data-masonry='{"percentPosition": true }'>
@@ -160,8 +164,6 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
      <div class="row" data-masonry='{"percentPosition": true }'>
                 <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
-                                     <p>   <h4>Near matches:</h4></p>
-
              {% for course in results_b %}
          {% with subject=course.subject %}
          {% if course not in results %}
@@ -197,6 +199,8 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
      </div>
 </div>
 </div>
+                          {% endif %}
+
 </div></div>
         </div>
             </div>
