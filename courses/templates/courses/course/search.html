@@ -29,13 +29,13 @@
         {% for course in results %}
             <h5 class="">
                 <br>
-                Found {{ total_results }} match{{ total_results|pluralize }} for "{{ query }}"
+                Found {{ total_results }} result{{total_results|pluralize }} for "{{ query }}"
             </h5>
             <br>
             <br>
         {% empty %}
             <h5 class="">
-                There are no matches for "{{ query }}"
+                There are no exact matches for "{{ query }}"
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
             <br>
