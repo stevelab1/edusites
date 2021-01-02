@@ -29,11 +29,14 @@
         {% for course in results %}
             <h5 class="">
                 <br>
+                <br>
                 Found {{ total_results }} result{{total_results|pluralize }} for "{{ query }}"
             </h5>
             <br>
             <br>
         {% empty %}
+        <br>
+            <br>
             <h5 class="">
                 There are no exact matches for "{{ query }}"
             </h5>
@@ -122,6 +125,9 @@ position-relative top-100 start-100 translate-middle-y
 
 
     {% if query %}
+
+                                         <p>   <h4>Near matches:</h4></p>
+
 
     <div class="">
         <div class="container">
