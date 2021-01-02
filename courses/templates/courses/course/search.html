@@ -152,19 +152,21 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                 </div>
                 {% endwith %}
                 {% endfor %}
-<!--            </div>-->
-<!--        </div>-->
+            </div>
+        </div>
 
                     <div class="">
     <div class="container">
      <div class="row" data-masonry='{"percentPosition": true }'>
                 <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
-                    <h4>Near matches:</h4>
 
              {% for course in results_b %}
          {% with subject=course.subject %}
          {% if course not in results %}
+
+                                     <p>   <h4>Near matches:</h4></p>
+
 
              <a href="{% url "course_detail" course.slug %}">
            <div class="card text-dark p-2 mb-4 bg-white">
