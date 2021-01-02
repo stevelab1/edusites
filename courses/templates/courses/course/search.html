@@ -32,12 +32,13 @@
                 <br>
                 Found {{ total_results }} result{{total_results|pluralize }} for "{{ query }}"
             </h5>
+        {{ total_results }} exact matches for "{{ query }}"... {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
             <br>
             <br>
         {% empty %}
             <br>
             <h5 class="">
-                {{ total_results }} exact matches for "{{ query }}". {{ results_b.count }} near matches
+                {{ total_results }} exact matches for "{{ query }}"... {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
             <br>
@@ -147,7 +148,7 @@ position-relative top-100 start-100 translate-middle-y
 text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
                         <div class="card-footer bg-white border-0 text-center">
-                             <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+                             <span class="badge rounded-pill bg-success"><small>{{ total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
                             {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
@@ -185,7 +186,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
 <!--               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
              </div>
              <div class="card-footer bg-white border-0 text-center">
-               <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+               <span class="badge rounded-pill bg-success"><small>{{ total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
                             {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
