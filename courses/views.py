@@ -248,15 +248,15 @@ def search(request, subject=None, category=None):
         if form.is_valid():
 
             query = form.cleaned_data['query']
-            search_vector = SearchVector('overview')
+            search_vector = SearchVector('title', 'overview')
             search_query = SearchQuery(query)
-            results_b = Course.objects.annotate(
+            results = Course.objects.annotate(
                 search=search_vector,
                 rank=SearchRank(search_vector, search_query)
             ).filter(search=search_query).order_by('-rank')
 
             query = form.cleaned_data['query']
-            results = Course.objects.annotate(
+            results_b = Course.objects.annotate(
                 similarity=TrigramSimilarity('title', query),
             ).filter(similarity__gt=0.1).order_by('-similarity')
 

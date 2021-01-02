@@ -22,79 +22,44 @@
   </ol></small>
 </nav>
 
-          {% if query %}
+
+{% if query %}
     <div class="container text-center text-truncate" style="height: 120px">
-          {% with results.count|add:results_b.count as total_results %}
-                    {% for course in results %}
-                                {% if course in results and results_b %}
-        {% with total_results|sub:1 as total_results_b %}
-        <h5 class="">
+        {% with results.count as total_results %}
+        {% for course in results %}
+            <h5 class="text-wrap">
                 <br>
-           Found {{ total_results_b }} result{{ total_results_b|pluralize }} for "{{ query }}"
-          </h5>
-<br>
-        <br>
-
+                <br>
+                Found {{ total_results }} match{{ total_results|pluralize:"es" }} for "{{ query }}"
+            </h5>
+            <br>
+            <br>
+        {% empty %}
+            <br>
+            <h5 class="text-wrap">
+               {{ total_results }} exact matches for "{{ query }}", and {{ results_b.count }} near match{{ results_b.count|pluralize:"es" }}
+            </h5>
+                <a href="{% url "search" %}"><u>Search again</u></a>
+            <br>
+        {% endfor %}
         {% endwith %}
-                                        {% endif %}
-                                                {% endfor %}
-                  {% endwith %}
-
-                                {% endif %}
-
- {% if query %}
-          {% with results.count|add:results_b.count as total_results %}
-                            {% if course in results %}
-
-                                        {% if course not in results_b %}
-         <h5 class="">
-                <br>        <br>
-            Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
-          </h5>
-
-                                {% endif %}
-
-                    {% else %}
-
-
-   <h5 class="">
-                <br>
-           Found {{ total_results }} result{{ total_results|pluralize }} for "{{ query }}"
-                   <h6><a href="{% url "search" %}"><u>Try again?</u></a></h6>
-
-          </h5>
-
-                    {% endif %}
-
-          {% endwith %}
-
-<!--          <p class="card-text">-->
-<!--            {% for course in results %}-->
-<!--            {% empty %}-->
-<!--            There are no results for your query.-->
-<!--            <a href="{% url "search" %}"><u>Search again</u></a>-->
-<!--            {% endfor %}-->
-<!--          </p>-->
-          {% else %}
-        </div>
-
-
+    </div>
+{% else %}
     <div class="container text-center mt-0" style="height: 120px">
-
         <br>
-
-          <form class="form-inline" style="display: inline-block; border-radius:22px;" method="get">
+        <form class="form-inline" style="display: inline-block; border-radius:22px;" method="get">
             {{ form }}
-              <div class="" style="display: inline-block; border-radius:22px;">
-            <button class="mx-5 mt-0 btn btn-white rounded-circle text-dark
+            <div class="" style="display: inline-block; border-radius:22px;">
+                <button class="mx-5 mt-0 btn btn-white rounded-circle text-dark
 
 position-relative top-100 start-100 translate-middle-y
 
 " type="submit" value="Search"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="63" fill="#adb5bd" class="bi bi-search" viewBox="0 0 16 66">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></svg></button>
-              </div>
-          </form>
-          {% endif %}
+            </div>
+        </form>
+    </div>
+{% endif %}
 
 
 <!--            <p><a href="{% url "chat:course_chat_room" "11" %}" target="_blank">-->
@@ -107,7 +72,6 @@ position-relative top-100 start-100 translate-middle-y
 <!--        <h5 class="card-title">Want to create your own courses?</h5>-->
 <!--        <p class="card-text">Start teaching today</p>-->
 <!--        <a href="{% url "manage_course_list" %}" class="btn btn-primary">Create a course</a>-->
-    </div>
 
 <div class="container">
 
@@ -168,7 +132,7 @@ position-relative top-100 start-100 translate-middle-y
                     <div class="card text-dark p-2 mb-4 bg-white">
                         <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px"  onerror="this.style.display='none'">
                         <div class="card-body">
-                                                    <h4 class="card-title bg-white">{{ course.title }}</h4>
+                            <h4 class="card-title bg-white">{{ course.title }}</h4>
 
 <!--               <h5 class="card-title">{{ course.overview }}</h5>-->
                             <h6 class="card-text">{{ course.overview }}</h6>
@@ -176,7 +140,7 @@ position-relative top-100 start-100 translate-middle-y
 text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
                         <div class="card-footer bg-white border-0 text-center">
-                             <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+                             <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
                             {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
@@ -190,18 +154,17 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                 </div>
                 {% endwith %}
                 {% endfor %}
-<!--            </div>-->
-<!--        </div>-->
 
 <!--                    <div class="">-->
 <!--    <div class="container">-->
 <!--     <div class="row" data-masonry='{"percentPosition": true }'>-->
                 <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
-
              {% for course in results_b %}
          {% with subject=course.subject %}
          {% if course not in results %}
+
+
 
              <a href="{% url "course_detail" course.slug %}">
            <div class="card text-dark p-2 mb-4 bg-white">
@@ -213,7 +176,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
 <!--               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
              </div>
              <div class="card-footer bg-white border-0 text-center">
-               <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
+               <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
                             {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
