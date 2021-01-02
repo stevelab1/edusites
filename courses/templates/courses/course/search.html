@@ -35,7 +35,7 @@
             <br>
         {% empty %}
             <h5 class="">
-                There are no results for your query.
+                There are no matches for "{{ query }}"
             </h5>
                 <a href="{% url "search" %}"><u>Search again</u></a>
             <br>
@@ -160,12 +160,12 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
      <div class="row" data-masonry='{"percentPosition": true }'>
                 <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
+                                     <p>   <h4>Near matches:</h4></p>
 
              {% for course in results_b %}
          {% with subject=course.subject %}
          {% if course not in results %}
 
-                                     <p>   <h4>Near matches:</h4></p>
 
 
              <a href="{% url "course_detail" course.slug %}">
