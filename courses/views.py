@@ -248,7 +248,7 @@ def search(request, subject=None, category=None):
         if form.is_valid():
 
             query = form.cleaned_data['query']
-            search_vector = SearchVector('title', 'overview', 'categories')
+            search_vector = SearchVector('title', 'overview')
             search_query = SearchQuery(query)
             results = Course.objects.annotate(
                 search=search_vector,
