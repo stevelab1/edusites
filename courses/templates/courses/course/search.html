@@ -123,6 +123,7 @@ position-relative top-100 start-100 translate-middle-y
 <br>
 
 
+    {% if query %}
 
     <div class="">
         <div class="container">
@@ -198,11 +199,12 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
      </div>
 </div>
 </div>
+                          {% endif %}
 
 </div></div>
         </div>
             </div>
-            </div>
+
 
 
 
