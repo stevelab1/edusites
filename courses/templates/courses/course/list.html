@@ -135,15 +135,18 @@ position-relative top-100 start-100 translate-middle-y
           <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
 
 
-{% for categories in "123" %}
+{% for c in categories %}
+          {% if "prog" or "web" not in c %}
 
         <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
-          <a class="nav-link active" aria-current="page" href="{% url "course_list_category" categories.slug %}">
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
 
-         {{ categories.title }}
+         {{ c.title }}
                       </a>
 
         </li>
+                {% endif %}
+
       {% endfor %}
 
 
