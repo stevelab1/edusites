@@ -121,10 +121,6 @@ position-relative top-100 start-100 translate-middle-y
     </div>
 <br><br>
 <br>
-
-
-    {% if query %}
-
     <div class="">
         <div class="container">
             <div class="row" data-masonry='{"percentPosition": true }'>
@@ -197,13 +193,10 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
       {% endwith %}
     {% endfor %}
      </div>
+
 </div>
         </div>
-                          {% endif %}
             </div>
-
-
-
 
 
          {% if not query %}
