@@ -27,7 +27,7 @@
 
 
 
-        <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 rounded-pill">
+        <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 rounded-3">
             <strong>{{ object.title|upper }}</strong>
 <br><br>
                           OVERVIEW<br>
@@ -55,15 +55,15 @@
 
 
 
-        <p class="tags">
-          Tags:
-          {% for tag in course.tags.all %}
-            <a href="{% url "course_list_tag" tag.slug %}">
-              {{ tag.name }}
-            </a>
-            {% if not forloop.last %}, {% endif %}
-          {% endfor %}
-        </p>
+<!--        <p class="tags">-->
+<!--          Tags:-->
+<!--          {% for tag in course.tags.all %}-->
+<!--            <a href="{% url "course_list_tag" tag.slug %}">-->
+<!--              {{ tag.name }}-->
+<!--            </a>-->
+<!--            {% if not forloop.last %}, {% endif %}-->
+<!--          {% endfor %}-->
+<!--        </p>-->
 <p></p>
 {% if request.user.is_authenticated %}
   <form action="{% url "student_enroll_course" %}" method="post">
