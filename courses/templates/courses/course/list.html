@@ -135,12 +135,8 @@ position-relative top-100 start-100 translate-middle-y
           <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
 
 
-          {% if c == "web" %}
-          w
-                    {% elif c == "programming" %}
-p
-
-          {% else %}
+{% for c in categories %}
+          {% if c != "web" or "programming" %}
 
         <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
           <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
@@ -150,6 +146,7 @@ p
 
         </li>
 {% endif %}
+      {% endfor %}
 
 
 <div class="dropdown">
