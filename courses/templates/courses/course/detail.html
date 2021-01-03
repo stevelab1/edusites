@@ -27,7 +27,7 @@
 
 
 
-        <h6><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-3 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
+        <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-2 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
 
 <!--             rounded-bottom" -->
 
@@ -36,7 +36,7 @@
 <br><br>
 
 
-<!--  <small class="">-->
+  <small class="">
 OVERVIEW<br>
       {{ object.overview }}
             <br><br>
@@ -52,8 +52,8 @@ OVERVIEW<br>
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-<!--      </small>-->
-        </h6>
+      </small>
+        </h5>
 
 
 
