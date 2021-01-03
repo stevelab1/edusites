@@ -111,6 +111,29 @@ position-relative top-100 start-100 translate-middle-y
         </li>
 
       {% endfor %}
+
+
+
+          <div class="dropdown">
+    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">More</a>
+    <ul class="dropdown-menu text-center rounded-3">
+
+  {% for tag in tags %}
+
+        <li class="nav-item active">
+          <a class="nav-link active" aria-current="page" href="{% url "course_list_tag" tag.slug %}">
+
+         {{ tag }}
+                      </a>
+
+        </li>
+
+      {% endfor %}
+
+    </ul>
+    </div>
+
+
            <a class="btn btn-outline-light rounded-pill text-dark" href="{% url "search" %}"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
   <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/></a>
 </svg>
