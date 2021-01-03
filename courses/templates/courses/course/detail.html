@@ -16,8 +16,8 @@
   </ol></small>
 </nav>
 
-<div class=" mx-3" style="background-image: url('https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}');">
-     <h1>
+<div class=" mx-3" >
+     <h1 style="background-image: url('https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}');">
         {{ object.title|upper }}
      </h1>
         <div class="row">
@@ -26,6 +26,9 @@
 
   {% with subject=object.subject %}
     <div class="card p-5">
+
+                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">
+
       <h2>Overview</h2>
 
       {{ object.overview|linebreaks }}
@@ -60,13 +63,6 @@
   </a></p>
 {% endif %}
   {% endwith %}
-
-
-
-
-        <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">
-
-
 
   </div>
   </div>
