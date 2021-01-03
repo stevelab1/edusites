@@ -25,13 +25,13 @@
   {% with subject=object.subject %}
     <div class="card p-4">
 
-        <h1 class="">
-        {{ object.title|upper }}
-        </h1>
+
 
         <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50">
+            <strong>{{ object.title|upper }}</strong>
+<br>
                           <strong>OVERVIEW</strong>
-
+<br>
       {{ object.overview}}
         </p>
 
