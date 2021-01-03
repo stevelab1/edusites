@@ -136,7 +136,9 @@ position-relative top-100 start-100 translate-middle-y
 
 
 {% for c in categories %}
-          {% if c != "web" or "programming" %}
+          {% if c != "web" %}
+          x
+          {% else %}
 
         <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
           <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
