@@ -135,27 +135,17 @@ position-relative top-100 start-100 translate-middle-y
           <li class="nav-item rounded-pill"><a class="nav-link active" aria-current="page" href="/">#</a></li>
 
 
-{% for c in categories %}
-          {% if c == 'web' %}
-          x
-          {% elif c == 'programming' %}
-          y
-                    {% else %}
-
-
-        <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
+      {% for c in categories %}
+          <li class="nav-item rounded-pill"  {% if category == c %}class="selected" style="background-color: #e9ecef" {% endif %}>
           <a class="nav-link active" aria-current="page" href="{% url "course_list_category" c.slug %}">
-
-         {{ c.title }}
-                      </a>
-
-        </li>
-{% endif %}
+              {{ c.title }}
+          </a>
+          </li>
       {% endfor %}
 
 
 <div class="dropdown">
-    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">More</a>
+    <a class="nav-link dropdown-toggle text-dark" data-bs-toggle="dropdown" href="#" role="button" aria-expanded="false">more</a>
     <ul class="dropdown-menu text-center rounded-3">
 
   {% for tag in tags %}
