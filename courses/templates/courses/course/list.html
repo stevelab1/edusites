@@ -25,7 +25,7 @@
         {% elif category %}
         {{ category.title|title }} Courses
         {% elif tag %}
-        {{ tag }} courses
+        {{ tag }}
     {% else %}
       All Courses
     {% endif %}</li>
@@ -44,7 +44,7 @@
 <!--             <p class="card-text"> {{ subject.content}} </p>-->
           {% elif tag %}
         <br>        <br>
-        <h5 class="card-title"> {{ tag|title }} Courses</h5>
+        <h5 class="card-title"> {{ tag }} </h5>
           {% else %}
 
         <br>
