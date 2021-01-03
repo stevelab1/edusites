@@ -29,10 +29,14 @@
 
         <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0">
             <strong>{{ object.title|upper }}</strong>
-<br>
-                          <strong>OVERVIEW</strong>
-<br>
+<br><br>
+                          OVERVIEW
       {{ object.overview}}
+            <br><br>
+            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
+  {% endfor %} <br>
+        Instructor: {{ object.owner.get_full_name }}<br>
+        Subject: {{ subject.title }}
         </p>
 
 
@@ -41,12 +45,7 @@
 <!--                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">-->
 
 
-       <p class="text-muted">
-        {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
-  {% endfor %} <br>
-        Instructor: {{ object.owner.get_full_name }}<br>
-        Subject: {{ subject.title }}
-      </p>
+
 
         <p class="tags">
           Tags:
