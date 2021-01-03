@@ -232,7 +232,7 @@ class CourseDetailView(DetailView):
         return context
 
 
-def search(request, subject=None, category=None):
+def search(request, subject=None, category=None, tag=None):
     form = SearchForm()
     query = None
     results = []
@@ -245,6 +245,7 @@ def search(request, subject=None, category=None):
     courses = Course.objects.annotate(
         total_modules=Count('modules')) \
         .order_by('-updated')
+    tags = Course.tags.all()
 
     if 'query' in request.GET:
         form = SearchForm(request.GET)
@@ -264,6 +265,10 @@ def search(request, subject=None, category=None):
             ).filter(similarity__gt=0.1).order_by('-similarity')
 
 
+    if tag:
+        tag = get_object_or_404(Tag, slug=tag)
+        courses = courses.filter(tags__in=[tag])
+
     if category:
         category = get_object_or_404(Category, slug=category)
 
@@ -281,4 +286,6 @@ def search(request, subject=None, category=None):
                    'courses': courses,
                    'subjects': subjects,
                    'category': category,
+                   'tag': tag,
+                   'tags': tags,
                    'categories': categories})
