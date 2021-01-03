@@ -32,9 +32,9 @@
 <!--             rounded-bottom" -->
 
 
-            <strong>{{ object.title|upper }}</strong>
+            <large>{{ object.title|upper }}</large>
 <br><br>
-                          OVERVIEW<br><br>
+                          OVERVIEW<br>
       {{ object.overview }}
             <br><br>
             {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
