@@ -27,7 +27,11 @@
 
 
 
-        <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 rounded-3">
+        <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 rounded-3" style="border-radius: 20px" onerror="this.style.display='none'">
+
+<!--             rounded-bottom" -->
+
+
             <strong>{{ object.title|upper }}</strong>
 <br><br>
                           OVERVIEW<br>
