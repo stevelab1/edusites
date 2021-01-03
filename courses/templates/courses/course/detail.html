@@ -24,14 +24,14 @@
 
   {% with subject=object.subject %}
     <div class="card p-4">
-
-        <div class="float-end" style="background-image: url('https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}'); background-repeat: no-repeat;">
-       <h1 class="p-0 mb-4 bg-white" >
+        <p><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end">
+        <h1 class="p-0 mb-4" >
         {{ object.title|upper }}
-     </h1>
-            </div>
+        </h1>
+        </p>
 
-        <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="float-end">
+
+
 
 <!--                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">-->
 
