@@ -27,17 +27,17 @@
 
 
 
-        <h4><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-4 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
+        <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-4 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
 
 <!--             rounded-bottom" -->
 
 
             <strong>{{ object.title|upper }}</strong>
 <br><br>
-                          OVERVIEW<br>
+
 
   <small class="">
-
+OVERVIEW<br>
       {{ object.overview }}
             <br><br>
             {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
@@ -52,7 +52,7 @@
             </a></small>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-        </h4>
+        </h5>
 
 
 
