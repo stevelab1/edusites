@@ -196,6 +196,8 @@ class CourseListView(TemplateResponseMixin, View):
             total_modules=Count('modules')) \
             .order_by('-updated')
         categories = Category.objects.all()
+        tags = Course.tags.all()
+
 
         if tag:
             tag = get_object_or_404(Tag, slug=tag)
@@ -214,6 +216,7 @@ class CourseListView(TemplateResponseMixin, View):
                                         'category': category,
                                         'categories': categories,
                                         'tag': tag,
+                                        'tags': tags,
                                         'courses': courses})
 
 
