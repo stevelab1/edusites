@@ -41,18 +41,18 @@ OVERVIEW<br>
       {{ object.overview }}
             <br><br>
 
-            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% spaceless %}{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
+            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% spaceless %}{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endspaceless %}{% endif %}
 
-  {% endfor %}{% endspaceless %} <br>
+  {% endfor %} <br>
         Instructor: {{ object.owner.get_full_name }}<br>
         Subject: {{ subject.title }}
             <br><br>
             Tags:
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
-              {{ tag.name }}
+              {% spaceless %}{{ tag.name }}
             </a>
-            {% if not forloop.last %}, {% endif %}
+            {% if not forloop.last %}, {% endspaceless %}{% endif %}
           {% endfor %}
 
       </small>
