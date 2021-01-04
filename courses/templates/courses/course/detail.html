@@ -40,10 +40,11 @@
 OVERVIEW<br>
       {{ object.overview }}
             <br><br>
-            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.id }}. {{ m.title }} {% if not forloop.last %}, {% endif %}
+            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}
   {% endfor %} <br>
         Instructor: {{ object.owner.get_full_name }}<br>
-        Subject: {{ subject.title }}
+        Subject: <a href="{% url "course_list_subject" subject.slug %}">
+        {{ subject.title }}</a>
             <br><br>
             Tags:
           {% for tag in course.tags.all %}
