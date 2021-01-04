@@ -48,15 +48,14 @@ OVERVIEW<br>
             <br><br>
 
             Tags:
-      {% nospaces %}
+      {% autoescape off %}
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
               {{ tag.name }}
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-            {% nospaces %}
-
+{% endautoescape %}
 
       </small>
         </h5>
