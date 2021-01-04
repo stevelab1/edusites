@@ -48,14 +48,12 @@ OVERVIEW<br>
             <br><br>
 
             Tags:
-      {% autoescape off %}
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
-              {{ tag.name }}
+              <span class="badge rounded-pill bg-secondary">{{ tag.name }}</span>
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-{% endautoescape %}
 
       </small>
         </h5>
