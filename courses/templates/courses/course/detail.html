@@ -46,15 +46,18 @@ OVERVIEW<br>
         Subject: <a href="{% url "course_list_subject" subject.slug %}">
         {{ subject.title }}</a>
             <br><br>
-      <p class="tags">
+
             Tags:
+      {% nospaces %}
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
               {{ tag.name }}
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-      </p>
+            {% nospaces %}
+
+
       </small>
         </h5>
 
