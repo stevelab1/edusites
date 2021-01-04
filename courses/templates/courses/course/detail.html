@@ -46,13 +46,15 @@ OVERVIEW<br>
         Subject: <a href="{% url "course_list_subject" subject.slug %}">
         {{ subject.title }}</a>
             <br><br>
+          <p class="tags">
             Tags:
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
-              {{ tag.name}}
+              {{ tag.name }}
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
+      </p>
       </small>
         </h5>
 
@@ -120,6 +122,16 @@ OVERVIEW<br>
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
 <!--{{ course.overview|truncatewords_html:5 }}</a></p>-->
+
+ <p class="tags">
+            Tags:
+          {% for tag in course.tags.all %}
+            <a href="{% url "course_list_tag" tag.slug %}">
+              {{ tag.name }}
+            </a>
+            {% if not forloop.last %}, {% endif %}
+          {% endfor %}
+      </p>
 
 
 {% endblock %}
