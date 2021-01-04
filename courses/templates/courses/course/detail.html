@@ -50,7 +50,7 @@ OVERVIEW<br>
             Tags:
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
-              <span class="badge rounded-pill bg-secondary">{{ tag.name }}</span>
+              {{ tag.name }}
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
