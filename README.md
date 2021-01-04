@@ -14,7 +14,7 @@ Stephen Tallett
 
 ---
 
-###To-do:
+### To-do:
 
 - [ ] Update DetailView
 - [ ] Tidy form and contributor pages
