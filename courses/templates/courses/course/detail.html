@@ -39,10 +39,11 @@
   <small class="">
 OVERVIEW<br>
       {{ object.overview }}
-            <br><br>       {% spaceless %}
+            <br><br>
 
-            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
-  {% endfor %} <br>
+            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% spaceless %}{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}
+
+  {% endfor %}{% endspaceless %} <br>
         Instructor: {{ object.owner.get_full_name }}<br>
         Subject: {{ subject.title }}
             <br><br>
@@ -53,7 +54,6 @@ OVERVIEW<br>
             </a>
             {% if not forloop.last %}, {% endif %}
           {% endfor %}
-            {% endspaceless %}
 
       </small>
         </h5>
