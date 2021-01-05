@@ -37,10 +37,10 @@
                     <h5 class="card-title">Skills you'll gain</h5>
                     {% for tag in course.tags.all %}
                     <a href="{% url "course_list_tag" tag.slug %}">
-                    <span class="badge rounded-pill bg-info mb-3">{{ tag.name }}</span>
+                    <span class="badge rounded-pill bg-info">{{ tag.name }}</span>
                     </a>
                     {% endfor %}
-            <br><br>
+            <br><br><br><br>
 
 
 <!--                    <h5 class="card-title">About this course</h5>-->
