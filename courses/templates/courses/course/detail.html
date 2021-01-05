@@ -25,12 +25,14 @@
             <div class="card p-3">
                 <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px" onerror="this.style.display='none'">
                 <div class="card-body">
-                    <h3 class="card-title mb-4"><strong>{{ object.title }}</strong>></h3>
+                    <h3 class="card-title mb-1"><strong>{{ object.title }}</strong></h3>
+                       {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary mb-4">{{ category }}</span></a>
+  {% endfor %}
 <!--        <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-2 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">-->
                     <h5 class="card-title">Skills you'll gain</h5>
                     {% for tag in course.tags.all %}
                     <a href="{% url "course_list_tag" tag.slug %}">
-                    <span class="badge rounded-pill bg-secondary">{{ tag.name }}</span>
+                    <span class="badge rounded-pill bg-info">{{ tag.name }}</span>
                     </a>
                     {% endfor %}
             <br><br>
@@ -106,10 +108,14 @@
 <!--             </div>-->
 <!--             <div class="card-footer bg-white border-0">-->
 <!--               <span  class="badge rounded-pill bg-secondary">{{ course.modules.all.count }} modules</span>-->
-<!--                                <span class="badge rounded-pill bg-secondary"> {{ object.subject.title }} </span>-->
 
-<!--                                <span  class="badge rounded-pill bg-secondary">{% for categories in course.categories.all %} {{ categories|title }} {% if not forloop.last %}, {% endif %}-->
-<!--  {% endfor %}</span>-->
+    {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary">{{ category.slug }}</span></a>
+  {% endfor %}
+
+                                <span class="badge rounded-pill bg-secondary"> {{ object.subject.title }} </span>
+
+                                <button type="button" class="btn btn btn-outline-secondary rounded-pill btn-sm text-dark">{% for categories in course.categories.all %} {{ categories|title }}
+  {% endfor %}</button>
 <!--                 <span  class="badge rounded-pill bg-secondary">{% for m in course.modules.all %} {{ m.title }} {% if not forloop.last %}, {% endif %}-->
 <!--  {% endfor %}</span>-->
 
