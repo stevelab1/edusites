@@ -166,7 +166,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                              <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-                            {% for category in categories|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
+                            {% for category in course.categories.all|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
@@ -202,7 +202,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-                            {% for category in categories|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
+                            {% for category in course.categories.all|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
 
 <!--     <p><h4><a href="/course/{{ course.slug }}">{{ course.title }}</h4>-->
@@ -243,7 +243,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                             <span class="badge rounded-pill bg-success"><small>{{ course.total_modules }} module{{ course.total_modules|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
-                            {% for category in categories|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
+                            {% for category in course.categories.all|slice:"1:" %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ category }}</small></span></a>
   {% endfor %}
                         </div>
                     </div>
