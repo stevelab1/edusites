@@ -27,7 +27,7 @@
                 <div class="card-body">
                     <h3 class="card-title mb-4">{{ object.title }}</h3>
 <!--        <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-2 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">-->
-                    <h5 class="card-title">Skills you'll learn</h5>
+                    <h5 class="card-title">Skills you'll gain</h5>
                     {% for tag in course.tags.all %}
                     <a href="{% url "course_list_tag" tag.slug %}">
                     <span class="badge rounded-pill bg-secondary">{{ tag.name }}</span>
@@ -38,7 +38,7 @@
 
                     <h5 class="card-title">About this course</h5>
 
-                    <p class="card-text mb-4">{{ object.overview }}</p>
+                    <p class="card-text mb-4">{{ object.overview|slice:"100:" }}</p>
 
 <!--            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}-->
 <!--  {% endfor %} <br>-->
