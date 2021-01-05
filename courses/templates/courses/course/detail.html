@@ -21,19 +21,19 @@
         <div class="row">
 
 <!--col col-sm-6 col-md-6 col-lg-4 col-xl-3    -->
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-1 mb-3">
+            <div class="col-12 col-md-6 col-lg-4 col-xl-3 mt-1 mb-3">
 <!--        <div class="col-12 mt-1 mb-3">-->
 
   {% with subject=object.subject %}
     <div class="card p-4">
 
 
-
+<h1 class="rounded-bottom" style="border-radius: 20px">{{ object.title }}</h1>
         <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-2 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
 
 
 
-            <strong>{{ object.title|upper }}</strong>
+
 <br><br>
 
 
