@@ -28,7 +28,7 @@
                     <h2 class="card-title mb-2"><strong>{{ object.title }}</strong></h2>
 <!--                       {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><span class="badge rounded-pill bg-secondary mb-4">{{ category }}</span></a>-->
 <!--  {% endfor %}-->
-                    {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><button type="button" class="btn btn-outline-secondary  btn-sm rounded-pill text-dark mb-3 py-0"><small>{{ category }}</small></button></a>
+                    {% for category in course.categories.all %} <a href="{% url "course_list_category" category.slug %}"><button type="button" class="btn btn-outline-dark btn-sm rounded-pill mb-3 py-0"><small>{{ category }}</small></button></a>
                     {% endfor %}
                     <p class="card-text mb-4">{{ object.overview|slice:":105" }}</p>
 
