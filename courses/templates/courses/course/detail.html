@@ -36,15 +36,16 @@
             <br><br>
 
 
-OVERVIEW<br>
-      {{ object.overview }}
-            <br><br>
-            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}
-  {% endfor %} <br>
-        Instructor: {{ object.owner.get_full_name }}<br>
-        Subject: <a href="{% url "course_list_subject" subject.slug %}">
-        {{ subject.title }}</a>
-            <br><br>
+                    <h5 class="card-title">About this course</h5>
+
+                    <p class="card-text">{{ object.overview }}</p>
+            <br>
+<!--            {{ object.modules.count }} module{{ object.modules.count|pluralize }}: {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}-->
+<!--  {% endfor %} <br>-->
+<!--        Instructor: {{ object.owner.get_full_name }}<br>-->
+<!--        Subject: <a href="{% url "course_list_subject" subject.slug %}">-->
+<!--        {{ subject.title }}</a>-->
+<!--            <br><br>-->
 
 
 
@@ -56,7 +57,7 @@ OVERVIEW<br>
 
 
 
-<p></p>
+
 {% if request.user.is_authenticated %}
   <form action="{% url "student_enroll_course" %}" method="post">
     {{ enroll_form }}
@@ -64,7 +65,6 @@ OVERVIEW<br>
     <input type="submit" value="Enrol now">
   </form>
 {% else %}
-        <p></p>
 
   <p><a href="{% url "student_registration" %}" class="button p-3">
     Enrol
@@ -75,17 +75,17 @@ OVERVIEW<br>
   </div>  </div>
 
 
-            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-1 mb-3">
+<!--            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-1 mb-3">-->
 
-                <div class="card p-4">
+<!--                <div class="card p-4">-->
 
-                    {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}
-  {% endfor %}
+<!--                    {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}-->
+<!--  {% endfor %}-->
 
-                </div>
+<!--                </div>-->
 
-  </div>
-            </div>
+<!--  </div>-->
+<!--            </div>-->
 
             <div class="mx-2">
 <p><h3>Other courses you might like:</h3></p>
