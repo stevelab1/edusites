@@ -20,7 +20,9 @@
 
         <div class="row">
 
-    <div class="col-12 mt-1 mb-3">
+<!--col col-sm-6 col-md-6 col-lg-4 col-xl-3    -->
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-1 mb-3">
+<!--        <div class="col-12 mt-1 mb-3">-->
 
   {% with subject=object.subject %}
     <div class="card p-4">
@@ -29,7 +31,6 @@
 
         <h5><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="img-thumbnail float-end p-0 w-50 h-50 border-0 ms-2 mb-3" style="border-radius: 20px" onerror="this.style.display='none'">
 
-<!--             rounded-bottom" -->
 
 
             <strong>{{ object.title|upper }}</strong>
@@ -47,12 +48,11 @@ OVERVIEW<br>
         {{ subject.title }}</a>
             <br><br>
 
-            Tags:
+            Skills you'll learn:
           {% for tag in course.tags.all %}
             <a href="{% url "course_list_tag" tag.slug %}">
-              {{ tag.name }}
+              <span class="badge rounded-pill bg-secondary">{{ tag.name }}</span>
             </a>
-            {% if not forloop.last %}, {% endif %}
           {% endfor %}
 
       </small>
@@ -66,15 +66,6 @@ OVERVIEW<br>
 
 
 
-<!--        <p class="tags">-->
-<!--          Tags:-->
-<!--          {% for tag in course.tags.all %}-->
-<!--            <a href="{% url "course_list_tag" tag.slug %}">-->
-<!--              {{ tag.name }}-->
-<!--            </a>-->
-<!--            {% if not forloop.last %}, {% endif %}-->
-<!--          {% endfor %}-->
-<!--        </p>-->
 <p></p>
 {% if request.user.is_authenticated %}
   <form action="{% url "student_enroll_course" %}" method="post">
@@ -91,8 +82,20 @@ OVERVIEW<br>
 {% endif %}
   {% endwith %}
 
+  </div>  </div>
+
+
+            <div class="col-12 col-md-6 col-lg-4 col-xl-4 mt-1 mb-3">
+
+                <div class="card p-4">
+
+                    {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}
+  {% endfor %}
+
+                </div>
+
   </div>
-  </div>
+            </div>
 
             <div class="mx-2">
 <p><h3>Other courses you might like:</h3></p>
