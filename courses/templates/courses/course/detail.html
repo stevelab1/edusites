@@ -59,12 +59,6 @@
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-4">
                 <h5 class="card-title"><strong>About this course</strong></h5>
-
-                        {% for m in course.modules.all %}
-                        {{ m.id }}. {{ m.title }}
-                        {% endfor %}
-
-
                                 <ul class="list-group list-group-flush">
                         <li class="list-group-item">
 
@@ -76,7 +70,7 @@
                                                     </li>
                         <li class="list-group-item">
 
-                Subject:<a href="{% url "course_list_subject" object.subject.slug %}">{{ object.subject.title }} / {{ object.subject.content }}</a>                        </li>
+                Subject: <a href="{% url "course_list_subject" object.subject.slug %}">{{ object.subject.title }}: {{ object.subject.content }}</a>                        </li>
 
                                                         </ul>
 
