@@ -84,6 +84,9 @@
                         <li class="list-group-item">
                         {{ m.id }}. {{ m.title }}
                         </li>
+                        <li class="list-group-item">
+                            x{ m.order|add:1 }}: {{ m.title }}
+                        </li>
                         {% endfor %}
                     </ul>
             </div>

@@ -15,12 +15,3 @@ Contains obsolete code (to be removed)
 All the best,
 
 Stephen Tallett
-
----
-
-### To-do:
-
-- [ ] Update DetailView
-- [ ] Tidy form and contributor pages
-- [ ] Placeholder content
-- [ ] Example code and commented-out code to be deleted
