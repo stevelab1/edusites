@@ -16,7 +16,7 @@
   </ol></small>
 </nav>
 
-<main class="container py-2 px-2">
+<main class="container py-2">
     <div class="row" data-masonry='{"percentPosition": true }'>
 <!--            {% with subject=object.subject %}-->
         <div class="col-sm-6 col-lg-4 mb-4">
@@ -82,26 +82,12 @@
                     <ul class="list-group list-group-flush">
                         {% for m in course.modules.all %}
                         <li class="list-group-item">
-                        {{ m.id }}. {{ m.title }}
+                            {{ m.order|add:1 }}: {{ m.title }}
                         </li>
                         {% endfor %}
                     </ul>
             </div>
         </div>
-
-
-
-
-
-<!--                    {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}-->
-<!--  {% endfor %}-->
-
-<!--                </div>-->
-
-
-
-
-
 
 
 <!--                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">-->
@@ -116,6 +102,7 @@
                         {% for course in related_items %}
                         <a href="{% url "course_detail" course.slug %}"><p><u>{{ course.title }}</u></a>
                         {% empty %}
+                        <br>
                         There are no similar courses yet.
                         {% endfor %}</p>
 
