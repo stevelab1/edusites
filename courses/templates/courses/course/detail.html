@@ -59,12 +59,27 @@
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-4">
                 <h5 class="card-title"><strong>About this course</strong></h5>
+
+                        {% for m in course.modules.all %}
+                        {{ m.id }}. {{ m.title }}
+                        {% endfor %}
+
+
+                                <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+
                 {{ object.modules.count }} module{{ object.modules.count|pluralize }}
-                Instructor: {{ object.owner.get_full_name }}<br>
-                Subject:
-                <a href="{% url "course_list_subject" object.subject.slug %}">
-                {{ object.subject.title }} / {{ object.subject.content }}
-                </a>
+                                                    </li>
+                        <li class="list-group-item">
+
+                Instructor: {{ object.owner.get_full_name }}
+                                                    </li>
+                        <li class="list-group-item">
+
+                Subject:<a href="{% url "course_list_subject" object.subject.slug %}">{{ object.subject.title }} / {{ object.subject.content }}</a>                        </li>
+
+                                                        </ul>
+
             </div>
         </div>
         <div class="col-sm-6 col-lg-4 mb-4">
