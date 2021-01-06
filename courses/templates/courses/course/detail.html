@@ -16,7 +16,7 @@
   </ol></small>
 </nav>
 
-<main class="container py-2 px-2">
+<main class="container py-2">
     <div class="row" data-masonry='{"percentPosition": true }'>
 <!--            {% with subject=object.subject %}-->
         <div class="col-sm-6 col-lg-4 mb-4">
@@ -116,6 +116,7 @@
                         {% for course in related_items %}
                         <a href="{% url "course_detail" course.slug %}"><p><u>{{ course.title }}</u></a>
                         {% empty %}
+                        <br>
                         There are no similar courses yet.
                         {% endfor %}</p>
 
