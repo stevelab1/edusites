@@ -56,27 +56,19 @@
                 </div>
             </div>
         </div>
-
-
-
-
-    <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card p-3">
-        <h5 class="card-title"><strong>About this course</strong></h5>
-        {{ object.modules.count }} module{{ object.modules.count|pluralize }}
-        Instructor: {{ object.owner.get_full_name }}<br>
-        Subject:
-        <a href="{% url "course_list_subject" object.subject.slug %}">
-        {{ object.subject.title }} / {{ object.subject.content }}
-        </a>
-</div>  </div>
-
-
-
-
-
         <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card p-3">
+            <div class="card p-4">
+                <h5 class="card-title"><strong>About this course</strong></h5>
+                {{ object.modules.count }} module{{ object.modules.count|pluralize }}
+                Instructor: {{ object.owner.get_full_name }}<br>
+                Subject:
+                <a href="{% url "course_list_subject" object.subject.slug %}">
+                {{ object.subject.title }} / {{ object.subject.content }}
+                </a>
+            </div>
+        </div>
+        <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card p-4">
                 <h5 class="card-title"><strong>Module{{ object.modules.count|pluralize }}</strong></h5>
                     <p class="card-text mb-4">
                         {% for m in course.modules.all %}
@@ -107,7 +99,7 @@
 
 
     <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card p-3">
+            <div class="card p-4">
                  <h5 class="card-title"><strong>Other courses you might like:</strong></h5>
                     <p class="card-text mb-4">
                         {% for course in related_items %}
