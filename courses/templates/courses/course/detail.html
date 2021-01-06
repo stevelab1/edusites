@@ -100,7 +100,7 @@
 
     <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-4">
-                 <h5 class="card-title"><strong>Other courses you might like:</strong></h5>
+                 <h5 class="card-title mb-0"><strong>Other courses you might like:</strong></h5>
                     <p class="card-text mb-4">
                         {% for course in related_items %}
                         <a href="{% url "course_detail" course.slug %}"><p><u>{{ course.title }}</u></a>
