@@ -82,29 +82,12 @@
                     <ul class="list-group list-group-flush">
                         {% for m in course.modules.all %}
                         <li class="list-group-item">
-                        {{ m.id }}. {{ m.title }}
-                        </li>
-                        <li class="list-group-item">
-                            x{{ m.order|add:1 }}: {{ m.title }}
+                            {{ m.order|add:1 }}: {{ m.title }}
                         </li>
                         {% endfor %}
                     </ul>
             </div>
         </div>
-
-
-
-
-
-<!--                    {% for m in course.modules.all %} {{ m.id }}. {{ m.title }}-->
-<!--  {% endfor %}-->
-
-<!--                </div>-->
-
-
-
-
-
 
 
 <!--                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">-->
