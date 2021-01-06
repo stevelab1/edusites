@@ -70,11 +70,13 @@
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-4">
                 <h5 class="card-title"><strong>Module{{ object.modules.count|pluralize }}</strong></h5>
-                    <p class="card-text mb-4">
+                    <ul class="list-group list-group-flush">
                         {% for m in course.modules.all %}
-                        {{ m.id }}. {{ m.title }} <br>
+                        <li class="list-group-item">
+                        {{ m.id }}. {{ m.title }}
+                        </li>
                         {% endfor %}
-                    </p>
+                    </ul>
             </div>
         </div>
 
