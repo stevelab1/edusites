@@ -20,7 +20,7 @@
     <div class="row" data-masonry='{"percentPosition": true }'>
 <!--            {% with subject=object.subject %}-->
         <div class="col-sm-6 col-lg-4 mb-4">
-            <div class="card">
+            <div class="card p-3">
                 <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px" onerror="this.style.display='none'">
                 <div class="card-body">
                     <h2 class="card-title mb-2"><strong>{{ object.title }}</strong></h2>
@@ -56,12 +56,31 @@
                 </div>
             </div>
         </div>
+
+
+
+
+    <div class="col-sm-6 col-lg-4 mb-4">
+            <div class="card p-3">
+        <h5 class="card-title"><strong>About this course</strong></h5>
+        {{ object.modules.count }} module{{ object.modules.count|pluralize }}
+        Instructor: {{ object.owner.get_full_name }}<br>
+        Subject:
+        <a href="{% url "course_list_subject" object.subject.slug %}">
+        {{ object.subject.title }} / {{ object.subject.content }}
+        </a>
+</div>  </div>
+
+
+
+
+
         <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-3">
-                <h5 class="card-title">Module{{ object.modules.count|pluralize }}</h5>
+                <h5 class="card-title"><strong>Module{{ object.modules.count|pluralize }}</strong></h5>
                     <p class="card-text mb-4">
                         {% for m in course.modules.all %}
-                        {{ m.id }}. {{ m.title|linebreaks }}
+                        {{ m.id }}. {{ m.title }}
                         {% endfor %}
                     </p>
             </div>
@@ -81,23 +100,6 @@
 
 
 
-            <!--                    <h5 class="card-title">About this course</h5>-->
-<!--            {{ object.modules.count }} -->
-<!--                    Module{{ object.modules.count|pluralize }}-->
-<!--                    {% for m in course.modules.all %}-->
-<!--                    {{ m.id }}. {{ m.title|linebreaks }}-->
-<!--                    {% endfor %}-->
-<!--                    <br>-->
-<!--        Instructor: {{ object.owner.get_full_name }}<br>-->
-<!--        Subject: <a href="{% url "course_list_subject" subject.slug %}">-->
-<!--        {{ subject.title }} / {{ subject.content }} </a>-->
-</a>
-<!--            <br><br>-->
-
-
-
-
-
 
 <!--                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="" style="" onerror="this.style.display='none'">-->
 
@@ -106,7 +108,7 @@
 
     <div class="col-sm-6 col-lg-4 mb-4">
             <div class="card p-3">
-                 <h4 class="card-title">Other courses you might like:</h4>
+                 <h5 class="card-title"><strong>Other courses you might like:</strong></h5>
                     <p class="card-text mb-4">
                         {% for course in related_items %}
                         <a href="{% url "course_detail" course.slug %}"><u>{{ course.title }}</u></a>
