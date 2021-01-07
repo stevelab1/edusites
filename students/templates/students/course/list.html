@@ -4,20 +4,20 @@
 
 {% block content %}
 <div class="col mx-3">
-  <p><h1>My courses</h1></p>
+  <p><h1 style="background-color: #f8f9fa">My courses</h1></p>
 </div>
 
-<div class="module_c">
+<div class="">
   <div class="container">
     <div class="row">
       {% for course in object_list %}
-      <div class="col-sm-4" >
-        <a href="{% url "student_course_detail" course.id %}">
-        <div class="card border-muted bg-secondary mb-3" style="min-width: 14rem; max-width: 43rem; height: 15rem">
-          <div class="card-header text-center text-white">{{ course.title }}</div>
-          <div class="card-body text-white">
-            <h6 class="card-text">{{ course.overview }}</h6>
-            <p class="card-text"><small class="text-white">Instructor: {{ course.owner.get_full_name }}</small></p>
+      <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+        <div class="card p-2 mb-4 bg-white">
+          <a href="{% url "student_course_detail" course.id %}"><img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px" onerror="this.style.display='none'">
+          <div class="card-body">
+          <h4 class="card-title bg-white">{{ course.title }}</h4>
+            <h6 class="card-text">{{ course.overview|slice:104 }}</h6>
+            <h6 class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></h6>
           </div>
           <div class="card-footer bg-white border-0 text-center">
             <span class="badge rounded-pill bg-secondary">Access course</span>
@@ -31,7 +31,9 @@
         <u><a href="{% url "course_list" %}">Browse courses</a></u>
         to enrol in a course.
       </p>
-    {% endfor %}
+      {% endfor %}
+    </div>
+  </div>
 </div>
 
 {% endblock %}

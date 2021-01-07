@@ -1,10 +1,8 @@
 # Edusites
 
-Education platform built on Django
+Education site built on Django 3.1.4 and Python 3.9
 
 Up-to-date settings and requirements for deploying to heroku
-
-Currently, running on Django 3.1.4 and Python 3.9
 
 Check dependencies e.g. search requires Postgres and cloud-settings require keys, or to be swapped out for local dev settings 
 
@@ -12,6 +10,6 @@ Check dependencies e.g. search requires Postgres and cloud-settings require keys
 
 Contains obsolete code (to be removed)
 
-All the best,
+Best wishes,
 
 Stephen Tallett
