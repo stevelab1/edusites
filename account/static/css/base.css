@@ -137,8 +137,7 @@ background-color: #ffffff;
 
 .card-footer{
 position:absolute;
-  bottom:0;
-  width:100%;
+  bottom:10;
 }
 
 .card:hover {
