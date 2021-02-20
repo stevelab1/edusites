@@ -146,13 +146,13 @@ position-relative top-100 start-100 translate-middle-y
 <br>
     <div class="">
         <div class="container">
-            <div class="row" data-masonry='{"percentPosition": true }'>
+            <div class="row">
                 {% for course in results %}
                 {% with subject=course.subject %}
-                <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
                     <a href="{% url "course_detail" course.slug %}">
-                    <div class="card text-dark p-2 mb-4 bg-white">
+                    <div class="card p-2 mb-4 bg-white" style="min-height: 370px; min-width: 250px; max-width: 460px">
                         <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px"  onerror="this.style.display='none'">
                         <div class="card-body">
                             <h4 class="card-title bg-white">{{ course.title }}</h4>
@@ -162,7 +162,7 @@ position-relative top-100 start-100 translate-middle-y
 <!--                            <p class="card-
 text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
                         </div>
-                        <div class="card-footer bg-white border-0 text-center">
+                         <div class="card-footer bg-white border-0 text-center my-2">
                              <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
@@ -181,7 +181,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
 <!--                    <div class="">-->
 <!--    <div class="container">-->
 <!--     <div class="row" data-masonry='{"percentPosition": true }'>-->
-                <div class="col col-sm-6 col-md-6 col-lg-4 col-xl-3">
+                <div class="col-sm-6 col-md-6 col-lg-4 col-xl-3">
 
              {% for course in results_b %}
          {% with subject=course.subject %}
@@ -190,7 +190,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
 
 
              <a href="{% url "course_detail" course.slug %}">
-           <div class="card text-dark p-2 mb-4 bg-white">
+           <div class="card p-2 mb-4 bg-white" style="min-height: 370px; min-width: 250px; max-width: 460px">
                <img src="https://res.cloudinary.com/hmklz8dtf/image/upload/v1/{{ course.file }}" class="card-img-top rounded-bottom" style="border-radius: 20px"  onerror="this.style.display='none'">
              <div class="card-body">
                  <h4 class="card-title bg-white">{{ course.title }}</h4>
@@ -198,7 +198,7 @@ text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</sm
                <h6 class="card-text">{{ course.overview }}</h6>
 <!--               <p class="card-text"><small class="text-muted">Instructor: {{ course.owner.get_full_name }}</small></p>-->
              </div>
-             <div class="card-footer bg-white border-0 text-center">
+              <div class="card-footer bg-white border-0 text-center my-2">
                <span class="badge rounded-pill bg-success"><small>{{ course.modules.count }} module{{ course.modules.count|pluralize }}</small></span></a>
 <!--                            <a href="{% url "course_list_subject" subject.slug %}"><span class="badge rounded-pill bg-secondary"><small>{{ subject }}</small></span></a>-->
 
