@@ -2,11 +2,9 @@
 
 ## Description
 
-Courseware (Django 3.1.4 and Python 3.9)
+Education portal built with Django 3.1.4 and Python 3.9
 
 Includes settings and requirements for deploying to heroku
-
-### Note
 
 Search functionality requires Postgres
 
